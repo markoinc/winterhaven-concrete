@@ -8,10 +8,40 @@ const state = 'FL';
 const distance = '35 miles';
 
 const services = [
-  { name: 'Concrete Driveways', href: '/services/driveways' },
-  { name: 'Concrete Patios', href: '/services/patios' },
-  { name: 'Concrete Slabs', href: '/services/slabs' },
-  { name: 'Stamped Concrete', href: '/services/stamped-concrete' },
+  { name: 'Concrete Driveways', href: '/services/driveways', description: 'Custom driveways built to last' },
+  { name: 'Concrete Patios', href: '/services/patios', description: 'Beautiful outdoor living spaces' },
+  { name: 'Concrete Slabs', href: '/services/slabs', description: 'Solid foundations for any project' },
+  { name: 'Stamped Concrete', href: '/services/stamped-concrete', description: 'Decorative concrete designs' },
+];
+
+const nearbyLocations = [
+  { name: 'Avon Park', href: '/locations/avon-park' },
+  { name: 'Lake Placid', href: '/locations/lake-placid' },
+  { name: 'Frostproof', href: '/locations/frostproof' },
+  { name: 'Lake Wales', href: '/locations/lake-wales' },
+];
+
+const faqs = [
+  {
+    question: `How much does a concrete driveway cost in ${city}?`,
+    answer: `Concrete driveway costs in ${city} typically range from $6 to $11 per square foot for standard installations, and $11 to $17+ per square foot for stamped or decorative concrete. ${city}'s slightly lower cost of living compared to coastal Florida is reflected in our competitive pricing. We provide free on-site estimates for all ${county} County projects.`
+  },
+  {
+    question: `Do you travel to ${city} from Winter Haven?`,
+    answer: `Yes! ${city} is approximately ${distance} from our Winter Haven base, and we regularly serve the entire ${county} County area. We factor travel into our scheduling to ensure we have full teams on-site for efficient project completion. Many ${city} homeowners appreciate working with an established contractor from the larger Central Florida market.`
+  },
+  {
+    question: `What makes ${city}'s soil different for concrete work?`,
+    answer: `${city} sits on the Lake Wales Ridge, one of Florida's oldest and highest geological features. This means sandier, well-drained soil compared to lower-elevation areas, but also more variability in soil composition. We assess each site carefully and design appropriate sub-base preparation to ensure long-lasting concrete installations in ${county} County.`
+  },
+  {
+    question: `Can you work around Sebring Raceway event schedules?`,
+    answer: `Absolutely! We understand that ${city} revolves around Sebring International Raceway, especially during the 12 Hours of Sebring and other major events. We're happy to schedule work around race weekends and the increased traffic they bring. Many local businesses need concrete work completed before major events—we can accommodate those timelines.`
+  },
+  {
+    question: `Do you offer concrete services for ${city}'s retirement communities?`,
+    answer: `Yes! ${city} and ${county} County have many active adult and 55+ communities where we regularly work. We understand the specific needs of these communities, including HOA requirements, accessibility considerations, and working respectfully in quieter neighborhoods. Our team is experienced with patio additions, driveway repairs, and accessibility ramps common in retirement communities.`
+  }
 ];
 
 const schema = {
@@ -21,7 +51,13 @@ const schema = {
   "provider": {
     "@type": "LocalBusiness",
     "name": "Winter Haven Concrete Contractors",
-    "telephone": "(863) 396-6145"
+    "telephone": "(863) 396-6145",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Winter Haven",
+      "addressRegion": "FL",
+      "addressCountry": "US"
+    }
   },
   "areaServed": {
     "@type": "City",
@@ -33,14 +69,29 @@ const schema = {
   },
   "description": `Professional concrete contractors serving ${city}, ${state}. Driveways, patios, slabs, and stamped concrete.`
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
 ---
 
 <BaseLayout 
-  title={`Concrete Contractors ${city} FL | Driveways, Patios & Slabs`}
-  description={`Professional concrete contractors in ${city}, Florida. Expert driveways, patios, slabs & stamped concrete. ${distance} from Winter Haven. Free estimates. Call (863) 396-6145.`}
-  canonical="/locations/sebring"
+  title={`Concrete Contractors ${city} FL | Driveways, Patios, Slabs`}
+  description={`Professional concrete contractors serving ${city}, Florida & Highlands County. Expert driveway installation, patio construction & stamped concrete. Free estimates - call (863) 396-6145.`}
+  canonical={`/locations/${city.toLowerCase()}`}
   schema={schema}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
   <!-- Hero -->
   <section class="bg-gradient-to-br from-slate-900 to-slate-800 py-16 lg:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,12 +104,12 @@ const schema = {
             <span class="mx-2">›</span>
             <span class="text-gray-300">{city}</span>
           </nav>
-          <h1 class="text-4xl sm:text-5xl font-bold mb-6">Concrete Contractors in {city}, {state}</h1>
+          <h1 class="text-4xl sm:text-5xl font-bold mb-6">Concrete Contractors in {city}, Florida</h1>
           <p class="text-xl text-gray-300 mb-4">
-            Professional concrete services for {city} homes and businesses. Located just {distance} from our Winter Haven headquarters, we proudly serve home of the famous 12 Hours of Sebring race.
+            Professional concrete services for {city} and all of {county} County. Home to the world-famous Sebring International Raceway, {city} is a community that appreciates quality and durability—values we bring to every concrete project.
           </p>
           <p class="text-gray-400 mb-8">
-            From new driveways to decorative stamped concrete patios, our experienced team delivers quality workmanship throughout {county} County.
+            From the charming Circle in historic downtown to growing residential neighborhoods and retirement communities, our team delivers expert <a href="/services/driveways" class="text-primary-400 hover:text-primary-300">driveways</a>, <a href="/services/patios" class="text-primary-400 hover:text-primary-300">patios</a>, and <a href="/services/stamped-concrete" class="text-primary-400 hover:text-primary-300">stamped concrete</a> throughout {city}.
           </p>
           <div class="flex flex-wrap gap-4">
             <a href="tel:+18633966145" class="inline-flex items-center gap-2 bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-lg transition-all">
@@ -79,76 +130,264 @@ const schema = {
     </div>
   </section>
 
-  <!-- Services -->
+  <!-- About Sebring Area -->
   <section class="py-16 lg:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Our Concrete Services in {city}</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Concrete Services Throughout {city} & {county} County</h2>
+        <div class="prose prose-lg max-w-none text-gray-600">
+          <p>
+            {city}, Florida—the "City on the Circle"—is the heart of {county} County and one of Central Florida's most distinctive communities. Known worldwide for Sebring International Raceway and its 12 Hours of Sebring endurance race, {city} combines small-town charm with a unique identity that attracts both racing enthusiasts and retirees seeking Florida's peaceful interior.
+          </p>
+          <p>
+            Our team serves all of {city}'s diverse areas, from the iconic <strong>downtown Circle</strong> with its historic architecture, to the lakefront properties around <strong>Lake Jackson</strong>, the growing <strong>Sun 'N Lake</strong> community, and everywhere in between. We understand the specific needs of {county} County—from the sandy ridge soils to the mix of historic properties and new construction.
+          </p>
+          <p>
+            {city}'s economy centers on healthcare (with AdventHealth Sebring), tourism around the raceway, agriculture (particularly citrus), and a substantial retirement population. This creates diverse concrete needs: medical facilities requiring ADA compliance, commercial properties serving race fans, residential driveways and patios, and specialized work for active adult communities. We handle it all with the same attention to quality.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Concrete Services in {city}</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          From residential driveways to commercial <a href="/services/slabs" class="text-primary-600 hover:text-primary-700">concrete slabs</a>, we offer comprehensive concrete solutions tailored to {city}'s unique ridge location and climate.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         {services.map(service => (
-          <a href={service.href} class="group bg-white border border-gray-200 p-6 rounded-xl hover:border-primary-500 hover:shadow-lg transition-all text-center">
-            <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-500 transition-colors">
+          <a href={service.href} class="group bg-white border border-gray-200 p-6 rounded-xl hover:border-primary-500 hover:shadow-lg transition-all">
+            <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary-500 transition-colors">
               <svg class="w-6 h-6 text-primary-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
               </svg>
             </div>
-            <h3 class="font-bold text-gray-900 group-hover:text-primary-600 transition-colors">{service.name}</h3>
+            <h3 class="font-bold text-gray-900 group-hover:text-primary-600 transition-colors mb-2">{service.name}</h3>
+            <p class="text-sm text-gray-600">{service.description}</p>
           </a>
+        ))}
+      </div>
+      <div class="max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Residential Concrete Services</h3>
+            <ul class="space-y-3 text-gray-600">
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Custom driveway installation and replacement</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Lakefront patios and outdoor living areas</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Pool decks with cool-finish options</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Accessibility ramps for aging-in-place</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span><a href="/services/stamped-concrete" class="text-primary-600 hover:text-primary-700">Decorative stamped concrete</a> for curb appeal</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Commercial & Specialty Services</h3>
+            <ul class="space-y-3 text-gray-600">
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Retail and restaurant parking areas</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Medical facility ADA improvements</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>55+ community common areas</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Agricultural property work pads</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Race weekend commercial preparations</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Local Challenges Section -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Understanding {city}'s Concrete Challenges</h2>
+          <div class="space-y-4 text-gray-600">
+            <p>
+              {city}'s location on the Lake Wales Ridge creates unique conditions for concrete work. Our team understands these local factors and builds them into every project plan.
+            </p>
+            <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
+              <h4 class="font-semibold text-amber-800 mb-2">Ridge Soil Conditions</h4>
+              <p class="text-amber-700 text-sm">
+                {city} sits on ancient sand dunes that form the Lake Wales Ridge. This deep, sandy soil drains quickly but can shift. We design proper compaction and sub-base systems that account for these conditions, preventing settling and cracking over time.
+              </p>
+            </div>
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <h4 class="font-semibold text-blue-800 mb-2">Inland Florida Climate</h4>
+              <p class="text-blue-700 text-sm">
+                {city}'s interior location means slightly more temperature variation than coastal areas, with hotter summers and cooler winters. We adjust concrete mixes seasonally and use appropriate curing methods to ensure optimal results year-round.
+              </p>
+            </div>
+            <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+              <h4 class="font-semibold text-green-800 mb-2">Historic & New Construction Mix</h4>
+              <p class="text-green-700 text-sm">
+                {city} features historic downtown areas alongside newer retirement communities and subdivisions. We have experience matching concrete work to existing architecture in historic areas while also serving new construction with modern techniques.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
+          <h3 class="font-bold text-gray-900 text-xl mb-6">Why Choose Us for Your {city} Project?</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <div>
+                <span class="font-semibold text-gray-900">Central Florida Experience</span>
+                <p class="text-sm text-gray-600">Extensive experience with {county} County's unique ridge conditions</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <div>
+                <span class="font-semibold text-gray-900">Retirement Community Specialists</span>
+                <p class="text-sm text-gray-600">Experienced with 55+ HOAs and accessibility requirements</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <div>
+                <span class="font-semibold text-gray-900">Flexible Scheduling</span>
+                <p class="text-sm text-gray-600">Work around race events and community schedules</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <div>
+                <span class="font-semibold text-gray-900">Licensed & Insured</span>
+                <p class="text-sm text-gray-600">Full Florida licensing with comprehensive coverage</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <div>
+                <span class="font-semibold text-gray-900">Competitive Pricing</span>
+                <p class="text-sm text-gray-600">Fair rates reflecting {county} County's market</p>
+              </div>
+            </li>
+          </ul>
+          <div class="mt-8">
+            <a href="/contact" class="block w-full text-center bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-lg transition-all">
+              Get Your Free Estimate
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sebring Neighborhoods -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Serving All of {city} & {county} County</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          From the historic Circle to Sun 'N Lake, we provide concrete services throughout {city} and surrounding communities.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">Downtown Circle</h3>
+          <p class="text-sm text-gray-600">Historic heart of {city} with unique circular street design and character architecture.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">Lake Jackson</h3>
+          <p class="text-sm text-gray-600">Beautiful lakefront properties on one of {county} County's most popular lakes.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">Sun 'N Lake</h3>
+          <p class="text-sm text-gray-600">Large residential community with golf courses and active adult amenities.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">Sebring Hills</h3>
+          <p class="text-sm text-gray-600">Growing residential area with mix of established and newer homes.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">Near the Raceway</h3>
+          <p class="text-sm text-gray-600">Properties near Sebring International Raceway with commercial and residential needs.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">Harder Hall</h3>
+          <p class="text-sm text-gray-600">Historic area with established properties and the famous Harder Hall resort.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">US 27 Corridor</h3>
+          <p class="text-sm text-gray-600">Commercial properties along the main highway through {city}.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">Spring Lake</h3>
+          <p class="text-sm text-gray-600">Residential community south of downtown with active adult options.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+        <p class="text-lg text-gray-600">Common questions about concrete services in {city}</p>
+      </div>
+      <div class="space-y-6">
+        {faqs.map((faq, index) => (
+          <div class="bg-white border border-gray-200 rounded-xl p-6">
+            <h3 class="font-bold text-gray-900 mb-3">{faq.question}</h3>
+            <p class="text-gray-600">{faq.answer}</p>
+          </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Local Area Info -->
+  <!-- Nearby Areas -->
   <section class="py-16 lg:py-24 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <h2 class="text-3xl font-bold text-gray-900 mb-6">Serving {city} & {county} County</h2>
-          <div class="space-y-4 text-gray-600">
-            <p>
-              {city} is home of the famous 12 Hours of Sebring race. Our team has extensive experience working throughout the area, understanding local soil conditions, building codes, and the unique needs of {county} County residents.
-            </p>
-            <p>
-              Whether you're near Sebring International Raceway, Downtown Sebring Circle, Highlands Hammock State Park, we bring the same professional service and quality materials to every project.
-            </p>
-            <p>
-              Just {distance} from our Winter Haven location, we can quickly respond to your concrete needs with free on-site estimates and competitive pricing.
-            </p>
-          </div>
-          <div class="mt-8 flex flex-wrap gap-4">
-            <a href="/contact" class="inline-flex items-center gap-2 bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-lg transition-all">
-              Request Free Estimate
-            </a>
-            <a href="/locations" class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold py-3 px-6 transition-all">
-              View All Service Areas →
-            </a>
-          </div>
-        </div>
-        <div class="bg-white rounded-2xl p-8 shadow-lg">
-          <h3 class="font-bold text-gray-900 mb-4">Why Choose Us for Your {city} Project?</h3>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-              <span class="text-gray-600">Local team that knows {county} County</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-              <span class="text-gray-600">Free estimates with no obligation</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-              <span class="text-gray-600">Licensed & insured in Florida</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-              <span class="text-gray-600">Quality materials & expert installation</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-              <span class="text-gray-600">Only {distance} away — fast response times</span>
-            </li>
-          </ul>
-        </div>
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Also Serving Nearby Communities</h2>
+        <p class="text-lg text-gray-600">We provide concrete services throughout Central Florida, including these {county} County neighbors.</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-4">
+        {nearbyLocations.map(location => (
+          <a href={location.href} class="bg-white px-6 py-3 rounded-lg shadow-sm hover:shadow-md border border-gray-200 hover:border-primary-500 transition-all text-gray-700 hover:text-primary-600 font-medium">
+            {location.name}
+          </a>
+        ))}
+        <a href="/locations" class="bg-primary-500 px-6 py-3 rounded-lg shadow-sm hover:bg-primary-600 transition-all text-white font-medium">
+          View All Locations →
+        </a>
       </div>
     </div>
   </section>
@@ -158,7 +397,7 @@ const schema = {
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-3xl font-bold text-white mb-6">Ready to Start Your {city} Concrete Project?</h2>
       <p class="text-xl text-primary-100 mb-8">
-        Contact us today for a free, no-obligation estimate on driveways, patios, slabs, or stamped concrete.
+        Contact us today for a free, no-obligation estimate on driveways, patios, slabs, or stamped concrete. We're proud to serve {city} and all of {county} County.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="tel:+18633966145" class="inline-flex items-center justify-center gap-2 bg-white text-primary-600 font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-all">

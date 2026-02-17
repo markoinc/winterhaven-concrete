@@ -44,6 +44,29 @@ const fullCanonical = canonical ? `${siteUrl}${canonical}` : Astro.url.href;
   
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   
+  <!-- Organization Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${siteUrl}/#organization`,
+    "name": "Winter Haven Concrete Contractors",
+    "url": siteUrl,
+    "logo": `${siteUrl}/images/logo.png`,
+    "telephone": "(863) 396-6145",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Winter Haven",
+      "addressRegion": "FL",
+      "postalCode": "33880",
+      "addressCountry": "US"
+    },
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": "Polk County, Florida"
+    },
+    "sameAs": []
+  })} />
+  
   <!-- LocalBusiness Schema -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",

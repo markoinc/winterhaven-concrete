@@ -1,0 +1,212 @@
+---
+import LandingLayout from '../../layouts/LandingLayout.astro';
+
+const phone = '(863) 396-6145';
+const phoneHref = 'tel:+18633966145';
+
+const benefits = [
+  {
+    icon: '🏠',
+    title: 'Boost Curb Appeal',
+    description: 'A new concrete driveway instantly transforms your home\'s appearance and can increase property value by 5-10%.'
+  },
+  {
+    icon: '💪',
+    title: 'Built to Last 25+ Years',
+    description: 'Properly installed concrete driveways outlast asphalt by decades. We use 4,000 PSI mix designed for Florida conditions.'
+  },
+  {
+    icon: '🛡️',
+    title: 'Florida-Tough Construction',
+    description: 'Our concrete mix and curing process is specifically engineered to handle Polk County\'s heat, humidity, and heavy rains.'
+  }
+];
+
+const trustBadges = [
+  { text: 'FL Licensed', icon: '✓' },
+  { text: 'Fully Insured', icon: '✓' },
+  { text: '12+ Years Experience', icon: '✓' },
+  { text: '4.9★ Google Rating', icon: '⭐' }
+];
+---
+
+<LandingLayout 
+  title="Concrete Driveway Installation Winter Haven FL | Free Quote"
+  description="Get a new concrete driveway in Winter Haven. Professional installation, 25+ year lifespan. Free estimates. Call (863) 396-6145."
+  canonical="/lp/driveways"
+>
+  <!-- Hero with Form -->
+  <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-sky-900 py-12 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <!-- Left: Content -->
+        <div class="text-white">
+          <div class="inline-flex items-center gap-2 bg-amber-500/20 border border-amber-500/30 text-amber-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <span>⚡</span> Limited Availability This Month
+          </div>
+          
+          <h1 class="text-4xl sm:text-5xl font-bold mb-6 leading-tight">
+            New Concrete Driveway for Your Winter Haven Home
+          </h1>
+          
+          <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+            Transform your home's entrance with a professionally installed concrete driveway that will last for decades. Local crew, fair pricing, no-pressure quotes.
+          </p>
+          
+          <!-- Trust Badges -->
+          <div class="flex flex-wrap gap-3 mb-8">
+            {trustBadges.map(badge => (
+              <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
+                <span class="text-green-400">{badge.icon}</span>
+                <span>{badge.text}</span>
+              </div>
+            ))}
+          </div>
+          
+          <!-- Phone CTA (Desktop) -->
+          <div class="hidden lg:flex items-center gap-4">
+            <a href={phoneHref} class="inline-flex items-center gap-3 bg-sky-600 hover:bg-sky-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all shadow-lg">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+              </svg>
+              {phone}
+            </a>
+            <span class="text-gray-400">or fill out the form →</span>
+          </div>
+        </div>
+        
+        <!-- Right: Quote Form -->
+        <div class="bg-white rounded-2xl shadow-2xl p-6 sm:p-8">
+          <div class="text-center mb-6">
+            <h2 class="text-2xl font-bold text-gray-900">Get Your Free Driveway Quote</h2>
+            <p class="text-gray-600 mt-1">No obligation • Response within 24 hours</p>
+          </div>
+          
+          <form action="https://formspree.io/f/placeholder" method="POST" class="space-y-4">
+            <input type="hidden" name="source" value="LP-Driveways">
+            <input type="hidden" name="service" value="Concrete Driveway">
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Your Name *</label>
+              <input type="text" name="name" required 
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+                placeholder="John Smith">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number *</label>
+              <input type="tel" name="phone" required 
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+                placeholder="(863) 555-1234">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+              <input type="email" name="email" 
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+                placeholder="john@email.com">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Project Type</label>
+              <select name="project_type" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500">
+                <option value="new-driveway">New Driveway Installation</option>
+                <option value="replacement">Driveway Replacement</option>
+                <option value="extension">Driveway Extension</option>
+                <option value="repair">Driveway Repair</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Approximate Size</label>
+              <select name="size" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500">
+                <option value="">Select size...</option>
+                <option value="small">Small (1-car, under 300 sq ft)</option>
+                <option value="medium">Medium (2-car, 300-600 sq ft)</option>
+                <option value="large">Large (3+ car, 600+ sq ft)</option>
+                <option value="unsure">Not sure</option>
+              </select>
+            </div>
+            
+            <button type="submit" 
+              class="w-full bg-sky-700 hover:bg-sky-800 text-white font-bold py-4 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl text-lg">
+              Get My Free Quote
+            </button>
+            
+            <p class="text-xs text-gray-500 text-center">
+              🔒 Your info is secure. We never share or sell your data.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Winter Haven Homeowners Choose Concrete Driveways</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        {benefits.map(benefit => (
+          <div class="text-center p-6">
+            <div class="text-5xl mb-4">{benefit.icon}</div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
+            <p class="text-gray-600 leading-relaxed">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+      
+      <!-- Citation -->
+      <div class="mt-12 text-center">
+        <p class="text-sm text-gray-500">
+          Concrete driveway best practices follow guidelines from the 
+          <a href="https://www.concrete.org/" target="_blank" rel="noopener" class="text-sky-700 hover:underline">American Concrete Institute (ACI)</a> 
+          and <a href="https://www.cement.org/" target="_blank" rel="noopener" class="text-sky-700 hover:underline">Portland Cement Association</a>.
+          Florida residential construction must comply with the <a href="https://floridabuilding.org/" target="_blank" rel="noopener" class="text-sky-700 hover:underline">Florida Building Code</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+        <div class="flex mb-4">
+          {[1,2,3,4,5].map(() => (
+            <svg class="w-6 h-6 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+          ))}
+        </div>
+        <blockquote class="text-xl md:text-2xl text-gray-800 mb-6 leading-relaxed">
+          "Had them pour a new driveway last spring. Crew showed up on time, cleaned up after themselves, and the concrete has held up great through two hurricane seasons. Exactly what I wanted—no drama, just solid work."
+        </blockquote>
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 bg-sky-100 rounded-full flex items-center justify-center text-sky-700 font-bold text-lg">M</div>
+          <div>
+            <div class="font-semibold text-gray-900">Mike T.</div>
+            <div class="text-gray-500">Cypress Gardens area, Winter Haven</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-16 bg-sky-700">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">Ready for Your New Driveway?</h2>
+      <p class="text-xl text-sky-100 mb-8">
+        Get a free, no-obligation quote today. We'll come to your property, measure everything, and give you an honest price.
+      </p>
+      <a href={phoneHref} class="inline-flex items-center gap-3 bg-white text-sky-700 font-bold py-4 px-8 rounded-lg text-lg hover:bg-gray-100 transition-all shadow-lg">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+        </svg>
+        Call {phone} Now
+      </a>
+    </div>
+  </section>
+</LandingLayout>

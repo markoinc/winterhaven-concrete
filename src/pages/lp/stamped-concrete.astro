@@ -1,0 +1,214 @@
+---
+import LandingLayout from '../../layouts/LandingLayout.astro';
+
+const phone = '(863) 396-6145';
+const phoneHref = 'tel:+18633966145';
+
+const benefits = [
+  {
+    icon: '💎',
+    title: 'High-End Look, Concrete Price',
+    description: 'Get the elegant appearance of natural stone, brick, or slate at a fraction of the cost. Stamped concrete costs 30-50% less than pavers.'
+  },
+  {
+    icon: '🎯',
+    title: 'Unlimited Pattern Options',
+    description: 'From Ashlar slate to cobblestone, herringbone brick to wood plank—choose from dozens of patterns and color combinations.'
+  },
+  {
+    icon: '⏱️',
+    title: 'Low Maintenance',
+    description: 'Unlike pavers that shift and grow weeds, stamped concrete is a single solid surface. Just occasional sealing keeps it looking new.'
+  }
+];
+
+const trustBadges = [
+  { text: 'FL Licensed', icon: '✓' },
+  { text: 'Fully Insured', icon: '✓' },
+  { text: '12+ Years Experience', icon: '✓' },
+  { text: '4.9★ Google Rating', icon: '⭐' }
+];
+---
+
+<LandingLayout 
+  title="Stamped Concrete Winter Haven FL | Decorative Concrete | Free Quote"
+  description="Beautiful stamped concrete in Winter Haven. Stone, brick, and slate patterns. Professional installation. Free estimates. Call (863) 396-6145."
+  canonical="/lp/stamped-concrete"
+>
+  <!-- Hero with Form -->
+  <section class="bg-gradient-to-br from-slate-900 via-amber-900 to-slate-800 py-12 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <!-- Left: Content -->
+        <div class="text-white">
+          <div class="inline-flex items-center gap-2 bg-amber-500/20 border border-amber-500/30 text-amber-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <span>✨</span> Most Popular Decorative Option
+          </div>
+          
+          <h1 class="text-4xl sm:text-5xl font-bold mb-6 leading-tight">
+            Stamped Concrete: Premium Look Without the Premium Price
+          </h1>
+          
+          <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+            Transform your patio, pool deck, or driveway with stunning stamped concrete. Replicate the look of expensive natural stone or brick at a fraction of the cost.
+          </p>
+          
+          <!-- Trust Badges -->
+          <div class="flex flex-wrap gap-3 mb-8">
+            {trustBadges.map(badge => (
+              <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
+                <span class="text-green-400">{badge.icon}</span>
+                <span>{badge.text}</span>
+              </div>
+            ))}
+          </div>
+          
+          <!-- Phone CTA (Desktop) -->
+          <div class="hidden lg:flex items-center gap-4">
+            <a href={phoneHref} class="inline-flex items-center gap-3 bg-amber-600 hover:bg-amber-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all shadow-lg">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+              </svg>
+              {phone}
+            </a>
+            <span class="text-gray-400">or fill out the form →</span>
+          </div>
+        </div>
+        
+        <!-- Right: Quote Form -->
+        <div class="bg-white rounded-2xl shadow-2xl p-6 sm:p-8">
+          <div class="text-center mb-6">
+            <h2 class="text-2xl font-bold text-gray-900">Get Your Free Stamped Concrete Quote</h2>
+            <p class="text-gray-600 mt-1">No obligation • Response within 24 hours</p>
+          </div>
+          
+          <form action="https://formspree.io/f/placeholder" method="POST" class="space-y-4">
+            <input type="hidden" name="source" value="LP-Stamped">
+            <input type="hidden" name="service" value="Stamped Concrete">
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Your Name *</label>
+              <input type="text" name="name" required 
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                placeholder="John Smith">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number *</label>
+              <input type="tel" name="phone" required 
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                placeholder="(863) 555-1234">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+              <input type="email" name="email" 
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                placeholder="john@email.com">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Where is this for?</label>
+              <select name="application" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500">
+                <option value="">Select area...</option>
+                <option value="patio">Patio</option>
+                <option value="pool-deck">Pool Deck</option>
+                <option value="driveway">Driveway</option>
+                <option value="walkway">Walkway / Entrance</option>
+                <option value="multiple">Multiple Areas</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Pattern Interest</label>
+              <select name="pattern" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500">
+                <option value="">Select pattern...</option>
+                <option value="slate">Ashlar Slate</option>
+                <option value="brick">Brick / Herringbone</option>
+                <option value="cobblestone">Cobblestone</option>
+                <option value="flagstone">Flagstone</option>
+                <option value="wood">Wood Plank</option>
+                <option value="unsure">Not sure - need guidance</option>
+              </select>
+            </div>
+            
+            <button type="submit" 
+              class="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-4 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl text-lg">
+              Get My Free Quote
+            </button>
+            
+            <p class="text-xs text-gray-500 text-center">
+              🔒 Your info is secure. We never share or sell your data.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Homeowners Love Stamped Concrete</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        {benefits.map(benefit => (
+          <div class="text-center p-6">
+            <div class="text-5xl mb-4">{benefit.icon}</div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
+            <p class="text-gray-600 leading-relaxed">{benefit.description}</p>
+          </div>
+        ))}
+      </div>
+      
+      <!-- Citation -->
+      <div class="mt-12 text-center">
+        <p class="text-sm text-gray-500">
+          Stamped concrete installation follows <a href="https://www.concrete.org/" target="_blank" rel="noopener" class="text-amber-700 hover:underline">American Concrete Institute (ACI)</a> guidelines for decorative concrete.
+          Color hardeners and sealers meet <a href="https://www.cement.org/" target="_blank" rel="noopener" class="text-amber-700 hover:underline">Portland Cement Association</a> standards for durability.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+        <div class="flex mb-4">
+          {[1,2,3,4,5].map(() => (
+            <svg class="w-6 h-6 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+          ))}
+        </div>
+        <blockquote class="text-xl md:text-2xl text-gray-800 mb-6 leading-relaxed">
+          "We wanted the look of pavers around our pool but didn't want to deal with settling and weeds. The stamped concrete they did looks amazing—all our neighbors ask about it. Way better than we expected."
+        </blockquote>
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center text-amber-700 font-bold text-lg">R</div>
+          <div>
+            <div class="font-semibold text-gray-900">Robert & Lisa K.</div>
+            <div class="text-gray-500">Lake Howard area, Winter Haven</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-16 bg-amber-700">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">Ready to Upgrade to Stamped Concrete?</h2>
+      <p class="text-xl text-amber-100 mb-8">
+        Get a free, no-obligation quote today. We'll show you pattern and color options that match your home's style.
+      </p>
+      <a href={phoneHref} class="inline-flex items-center gap-3 bg-white text-amber-700 font-bold py-4 px-8 rounded-lg text-lg hover:bg-gray-100 transition-all shadow-lg">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+        </svg>
+        Call {phone} Now
+      </a>
+    </div>
+  </section>
+</LandingLayout>

@@ -69,12 +69,85 @@ const areas = [
   'Davenport',
   'Polk City'
 ];
+
+// FAQPage Schema with 8 questions
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does a concrete driveway cost in Winter Haven?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most driveways in Polk County run between $8-15 per square foot installed, depending on size, thickness, and any decorative work. A typical 2-car driveway (400-600 sq ft) usually costs $4,000-8,000. We give free quotes so you know exactly what to expect."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long before I can walk on new concrete?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Light foot traffic is usually fine after 24-48 hours. For vehicles on driveways, we recommend waiting 7 days. Full cure takes about 28 days, but you can use it normally after the first week."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you pour concrete in the rain?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No—rain during a pour can ruin the concrete. We watch the weather closely and will reschedule if there's a significant chance of rain. Florida weather is unpredictable, but we'd rather delay a day than do a bad job."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you fix cracked concrete or do I need to replace it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depends on the damage. Small cracks can often be sealed. Larger structural cracks or heaving usually means replacement. We'll give you an honest assessment—we're not going to push a replacement if a repair will work."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a permit for a concrete driveway in Polk County?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In most cases, yes. Polk County requires permits for new driveways and significant modifications. We handle the permit process for you as part of our service—it's included in the quote and saves you the hassle of dealing with the building department."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What thickness should my concrete driveway be?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For residential driveways in Florida, we pour a minimum of 4 inches thick. For areas that might see heavier vehicles like RVs or boats, we recommend 5-6 inches. We also use proper reinforcement mesh or rebar depending on the application."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a concrete driveway last in Florida?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A properly installed concrete driveway in Florida typically lasts 25-30 years or more. The key is proper site prep, correct concrete mix for our climate, and appropriate curing time. We use a minimum 4,000 PSI mix designed for Florida's heat and humidity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between stamped concrete and pavers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Stamped concrete is a single poured surface textured and colored to look like stone or brick, while pavers are individual pieces set in sand. Stamped concrete costs 30-50% less, won't shift or grow weeds between joints, and requires less maintenance. Pavers can be easier to repair in small sections if needed."
+      }
+    }
+  ]
+};
 ---
 
 <BaseLayout 
   title="Concrete Contractors Winter Haven FL | Driveways, Patios & Slabs"
   description="Local concrete contractors in Winter Haven and Polk County, FL. Driveways, patios, slabs, stamped concrete. Free estimates. Call (863) 396-6145."
   canonical="/"
+  schema={faqSchema}
 >
   <!-- Hero - Clean, Light, Professional -->
   <section class="relative bg-gradient-to-b from-sky-50 to-white pt-8 pb-16 lg:pt-12 lg:pb-24">
@@ -459,6 +532,46 @@ const areas = [
           </summary>
           <div class="px-6 pb-6 text-gray-600">
             Depends on the damage. Small cracks can often be sealed. Larger structural cracks or heaving usually means replacement. We'll give you an honest assessment—we're not going to push a replacement if a repair will work.
+          </div>
+        </details>
+        
+        <details class="bg-white rounded-lg border border-gray-200 overflow-hidden group">
+          <summary class="flex items-center justify-between p-6 cursor-pointer font-semibold text-gray-900 hover:bg-gray-50">
+            Do I need a permit for a concrete driveway in Polk County?
+            <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-600">
+            In most cases, yes. <a href="https://www.polk-county.net/building-division" target="_blank" rel="noopener" class="text-sky-700 hover:underline">Polk County Building Division</a> requires permits for new driveways and significant modifications. We handle the permit process for you as part of our service—it's included in the quote and saves you the hassle.
+          </div>
+        </details>
+        
+        <details class="bg-white rounded-lg border border-gray-200 overflow-hidden group">
+          <summary class="flex items-center justify-between p-6 cursor-pointer font-semibold text-gray-900 hover:bg-gray-50">
+            What thickness should my concrete driveway be?
+            <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-600">
+            For residential driveways in Florida, we pour a minimum of 4 inches thick per <a href="https://www.concrete.org/" target="_blank" rel="noopener" class="text-sky-700 hover:underline">American Concrete Institute</a> standards. For areas that might see heavier vehicles like RVs or boats, we recommend 5-6 inches. We also use proper reinforcement mesh or rebar depending on the application.
+          </div>
+        </details>
+        
+        <details class="bg-white rounded-lg border border-gray-200 overflow-hidden group">
+          <summary class="flex items-center justify-between p-6 cursor-pointer font-semibold text-gray-900 hover:bg-gray-50">
+            How long does a concrete driveway last in Florida?
+            <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-600">
+            A properly installed concrete driveway in Florida typically lasts 25-30 years or more. The key is proper site prep, correct concrete mix for our climate, and appropriate curing time. We use a minimum 4,000 PSI mix designed for Florida's heat and humidity, following <a href="https://www.cement.org/" target="_blank" rel="noopener" class="text-sky-700 hover:underline">Portland Cement Association</a> guidelines.
+          </div>
+        </details>
+        
+        <details class="bg-white rounded-lg border border-gray-200 overflow-hidden group">
+          <summary class="flex items-center justify-between p-6 cursor-pointer font-semibold text-gray-900 hover:bg-gray-50">
+            What's the difference between stamped concrete and pavers?
+            <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-600">
+            Stamped concrete is a single poured surface textured and colored to look like stone or brick, while pavers are individual pieces set in sand. Stamped concrete costs 30-50% less, won't shift or grow weeds between joints, and requires less maintenance. Pavers can be easier to repair in small sections if needed.
           </div>
         </details>
       </div>

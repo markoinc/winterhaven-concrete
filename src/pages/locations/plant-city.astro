@@ -5,13 +5,43 @@ import ContactForm from '../../components/ContactForm.astro';
 const city = 'Plant City';
 const county = 'Hillsborough';
 const state = 'FL';
-const distance = '32 miles';
+const distance = '30 miles';
 
 const services = [
-  { name: 'Concrete Driveways', href: '/services/driveways' },
-  { name: 'Concrete Patios', href: '/services/patios' },
-  { name: 'Concrete Slabs', href: '/services/slabs' },
-  { name: 'Stamped Concrete', href: '/services/stamped-concrete' },
+  { name: 'Concrete Driveways', href: '/services/driveways', description: 'Custom driveways built to last' },
+  { name: 'Concrete Patios', href: '/services/patios', description: 'Beautiful outdoor living spaces' },
+  { name: 'Concrete Slabs', href: '/services/slabs', description: 'Solid foundations for any project' },
+  { name: 'Stamped Concrete', href: '/services/stamped-concrete', description: 'Decorative concrete designs' },
+];
+
+const nearbyLocations = [
+  { name: 'Lakeland', href: '/locations/lakeland' },
+  { name: 'Brandon', href: '/locations/brandon' },
+  { name: 'Dover', href: '/locations/dover' },
+  { name: 'Valrico', href: '/locations/valrico' },
+];
+
+const faqs = [
+  {
+    question: `How much does a concrete driveway cost in ${city}?`,
+    answer: `Concrete driveway costs in ${city} typically range from $7 to $13 per square foot for standard installations, and $13 to $20+ per square foot for stamped or decorative concrete. As part of the Tampa Bay metro area, ${city} pricing reflects regional market conditions while still being competitive with larger suburban areas. Contact us for a free on-site estimate.`
+  },
+  {
+    question: `Do you work with agricultural properties in ${city}?`,
+    answer: `Absolutely! ${city} is Florida's "Winter Strawberry Capital" with extensive agricultural operations. We provide concrete work for farm equipment pads, barn floors, processing facility slabs, loading docks, and residential properties on agricultural land. We understand the unique needs of working farms and can schedule around harvest seasons.`
+  },
+  {
+    question: `How does ${city}'s location affect concrete work?`,
+    answer: `${city} sits at the intersection of Polk and Hillsborough counties, on the eastern edge of the Tampa Bay metro. This means varied soil conditions—from sandy upland areas to clay-heavy lowlands near agricultural fields. We assess each site's specific conditions and design appropriate foundations for long-lasting concrete.`
+  },
+  {
+    question: `Can you work around the Florida Strawberry Festival schedule?`,
+    answer: `Yes! We understand that the Florida Strawberry Festival (typically late February to early March) is ${city}'s biggest event. Many businesses and homeowners want concrete work completed before the festival. We're happy to schedule projects to meet pre-festival deadlines or work around the event period as needed.`
+  },
+  {
+    question: `Do you serve the new developments east of ${city}?`,
+    answer: `Yes, we serve all of ${city} including the rapidly growing areas east toward Lakeland along I-4, new subdivisions along the Plant City-Thonotosassa corridor, and established neighborhoods throughout town. Whether you're in a new construction home or a historic downtown property, we provide the same quality concrete services.`
+  }
 ];
 
 const schema = {
@@ -21,7 +51,13 @@ const schema = {
   "provider": {
     "@type": "LocalBusiness",
     "name": "Winter Haven Concrete Contractors",
-    "telephone": "(863) 396-6145"
+    "telephone": "(863) 396-6145",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Winter Haven",
+      "addressRegion": "FL",
+      "addressCountry": "US"
+    }
   },
   "areaServed": {
     "@type": "City",
@@ -33,14 +69,29 @@ const schema = {
   },
   "description": `Professional concrete contractors serving ${city}, ${state}. Driveways, patios, slabs, and stamped concrete.`
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
 ---
 
 <BaseLayout 
-  title={`Concrete Contractors ${city} FL | Driveways, Patios & Slabs`}
-  description={`Professional concrete contractors in ${city}, Florida. Expert driveways, patios, slabs & stamped concrete. ${distance} from Winter Haven. Free estimates. Call (863) 396-6145.`}
-  canonical="/locations/plant-city"
+  title={`Concrete Contractors ${city} FL | Driveways, Patios, Slabs`}
+  description={`Professional concrete contractors serving ${city}, Florida. Expert driveway installation, patio construction & stamped concrete in the Strawberry Capital. Free estimates - call (863) 396-6145.`}
+  canonical={`/locations/plant-city`}
   schema={schema}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
   <!-- Hero -->
   <section class="bg-gradient-to-br from-slate-900 to-slate-800 py-16 lg:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,12 +104,12 @@ const schema = {
             <span class="mx-2">›</span>
             <span class="text-gray-300">{city}</span>
           </nav>
-          <h1 class="text-4xl sm:text-5xl font-bold mb-6">Concrete Contractors in {city}, {state}</h1>
+          <h1 class="text-4xl sm:text-5xl font-bold mb-6">Concrete Contractors in {city}, Florida</h1>
           <p class="text-xl text-gray-300 mb-4">
-            Professional concrete services for {city} homes and businesses. Located just {distance} from our Winter Haven headquarters, we proudly serve the Winter Strawberry Capital of the World.
+            Professional concrete services for {city}—Florida's "Winter Strawberry Capital." From charming downtown properties to agricultural operations and new residential developments, we serve all of {city}'s concrete needs.
           </p>
           <p class="text-gray-400 mb-8">
-            From new driveways to decorative stamped concrete patios, our experienced team delivers quality workmanship throughout {county} County.
+            Our team delivers quality <a href="/services/driveways" class="text-primary-400 hover:text-primary-300">driveways</a>, <a href="/services/patios" class="text-primary-400 hover:text-primary-300">patios</a>, and <a href="/services/stamped-concrete" class="text-primary-400 hover:text-primary-300">decorative concrete</a> throughout {city} and eastern {county} County. Just ${distance} from Winter Haven, we provide fast, reliable service to this growing community.
           </p>
           <div class="flex flex-wrap gap-4">
             <a href="tel:+18633966145" class="inline-flex items-center gap-2 bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-lg transition-all">
@@ -79,76 +130,264 @@ const schema = {
     </div>
   </section>
 
-  <!-- Services -->
+  <!-- About Plant City Area -->
   <section class="py-16 lg:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Our Concrete Services in {city}</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Concrete Services Throughout {city}</h2>
+        <div class="prose prose-lg max-w-none text-gray-600">
+          <p>
+            {city}, Florida is a unique blend of small-town charm and Tampa Bay metropolitan growth. Known worldwide as the home of the Florida Strawberry Festival and the Winter Strawberry Capital, {city} maintains its agricultural heritage while welcoming new residential and commercial development along the I-4 corridor.
+          </p>
+          <p>
+            Our team serves all of {city}'s diverse property types. From the <strong>historic downtown</strong> with its character homes and boutique businesses, to the sprawling <strong>strawberry farms</strong> that define the area, to new <strong>subdivisions</strong> sprouting up along Turkey Creek Road and beyond—we understand what each area needs from concrete work.
+          </p>
+          <p>
+            {city}'s location at the crossroads of {county} and Polk counties, with easy access to I-4 and the Tampa Bay metro, has fueled significant growth. New residents are drawn by the community's character and more affordable housing compared to Tampa proper. This growth means increased demand for quality concrete—driveways for new homes, patios for outdoor living, and commercial work for expanding businesses.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Concrete Services in {city}</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          From residential driveways to agricultural <a href="/services/slabs" class="text-primary-600 hover:text-primary-700">concrete slabs</a>, we offer comprehensive concrete solutions for {city}'s residential, commercial, and agricultural properties.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         {services.map(service => (
-          <a href={service.href} class="group bg-white border border-gray-200 p-6 rounded-xl hover:border-primary-500 hover:shadow-lg transition-all text-center">
-            <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-500 transition-colors">
+          <a href={service.href} class="group bg-white border border-gray-200 p-6 rounded-xl hover:border-primary-500 hover:shadow-lg transition-all">
+            <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary-500 transition-colors">
               <svg class="w-6 h-6 text-primary-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
               </svg>
             </div>
-            <h3 class="font-bold text-gray-900 group-hover:text-primary-600 transition-colors">{service.name}</h3>
+            <h3 class="font-bold text-gray-900 group-hover:text-primary-600 transition-colors mb-2">{service.name}</h3>
+            <p class="text-sm text-gray-600">{service.description}</p>
           </a>
+        ))}
+      </div>
+      <div class="max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Residential Concrete Services</h3>
+            <ul class="space-y-3 text-gray-600">
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>New construction driveways</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Driveway replacement and repairs</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Patios and outdoor entertainment areas</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Pool decks with slip-resistant finishes</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span><a href="/services/stamped-concrete" class="text-primary-600 hover:text-primary-700">Decorative stamped concrete</a></span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Agricultural & Commercial Services</h3>
+            <ul class="space-y-3 text-gray-600">
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Farm equipment pads and aprons</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Packing house and processing floors</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Loading dock construction</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Retail parking lots</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Industrial facility foundations</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Local Challenges Section -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Understanding {city}'s Concrete Challenges</h2>
+          <div class="space-y-4 text-gray-600">
+            <p>
+              {city}'s location and agricultural heritage create unique considerations for concrete work. Our team understands these local factors and builds them into every project.
+            </p>
+            <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
+              <h4 class="font-semibold text-amber-800 mb-2">Variable Soil Conditions</h4>
+              <p class="text-amber-700 text-sm">
+                {city}'s soil ranges from well-drained sandy uplands to heavier clay soils in agricultural areas. Former farmland being developed for housing may have compaction issues. We assess each site and design appropriate sub-base preparation for stable, long-lasting concrete.
+              </p>
+            </div>
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <h4 class="font-semibold text-blue-800 mb-2">Agricultural Area Considerations</h4>
+              <p class="text-blue-700 text-sm">
+                Properties near active farms may experience heavy equipment traffic, irrigation runoff, and seasonal activity fluctuations. We design concrete installations that account for these factors, including reinforcement for heavy loads and proper drainage solutions.
+              </p>
+            </div>
+            <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+              <h4 class="font-semibold text-green-800 mb-2">New Development Challenges</h4>
+              <p class="text-green-700 text-sm">
+                {city}'s rapid growth means many projects are on recently developed land. We work closely with builders and homeowners to ensure proper site preparation, including addressing any soil compaction or drainage issues from construction.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
+          <h3 class="font-bold text-gray-900 text-xl mb-6">Why Choose Us for Your {city} Project?</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <div>
+                <span class="font-semibold text-gray-900">Agricultural Experience</span>
+                <p class="text-sm text-gray-600">We understand farm property needs and heavy equipment requirements</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <div>
+                <span class="font-semibold text-gray-900">New Construction Ready</span>
+                <p class="text-sm text-gray-600">Experienced with {city}'s growing subdivisions and builders</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <div>
+                <span class="font-semibold text-gray-900">Festival-Ready Scheduling</span>
+                <p class="text-sm text-gray-600">We work around Strawberry Festival and seasonal needs</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <div>
+                <span class="font-semibold text-gray-900">Licensed & Insured</span>
+                <p class="text-sm text-gray-600">Full Florida licensing with comprehensive coverage</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <div>
+                <span class="font-semibold text-gray-900">Free Estimates</span>
+                <p class="text-sm text-gray-600">Detailed quotes with transparent, competitive pricing</p>
+              </div>
+            </li>
+          </ul>
+          <div class="mt-8">
+            <a href="/contact" class="block w-full text-center bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-lg transition-all">
+              Get Your Free Estimate
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plant City Neighborhoods -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Serving All of {city}</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          From downtown to the agricultural outskirts, we provide concrete services throughout {city} and surrounding areas.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">Downtown {city}</h3>
+          <p class="text-sm text-gray-600">Historic downtown with character buildings, local businesses, and established homes.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">Walden Lake</h3>
+          <p class="text-sm text-gray-600">Master-planned community with golf course and upscale residential properties.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">Turkey Creek Area</h3>
+          <p class="text-sm text-gray-600">Growing residential corridor with new subdivisions and developments.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">Agricultural Areas</h3>
+          <p class="text-sm text-gray-600">Farm properties throughout {city}'s strawberry and agricultural districts.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">I-4 Corridor</h3>
+          <p class="text-sm text-gray-600">Commercial and industrial properties along the interstate highway.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">East {city}</h3>
+          <p class="text-sm text-gray-600">Growing area toward Lakeland with new residential development.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">Park Road Area</h3>
+          <p class="text-sm text-gray-600">Mix of residential neighborhoods and commercial properties.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">Thonotosassa Corridor</h3>
+          <p class="text-sm text-gray-600">Western {city} area connecting to Tampa metro.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+        <p class="text-lg text-gray-600">Common questions about concrete services in {city}</p>
+      </div>
+      <div class="space-y-6">
+        {faqs.map((faq, index) => (
+          <div class="bg-white border border-gray-200 rounded-xl p-6">
+            <h3 class="font-bold text-gray-900 mb-3">{faq.question}</h3>
+            <p class="text-gray-600">{faq.answer}</p>
+          </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Local Area Info -->
+  <!-- Nearby Areas -->
   <section class="py-16 lg:py-24 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <h2 class="text-3xl font-bold text-gray-900 mb-6">Serving {city} & {county} County</h2>
-          <div class="space-y-4 text-gray-600">
-            <p>
-              {city} is the Winter Strawberry Capital of the World. Our team has extensive experience working throughout the area, understanding local soil conditions, building codes, and the unique needs of {county} County residents.
-            </p>
-            <p>
-              Whether you're near Florida Strawberry Festival, Downtown Plant City, Dinosaur World, we bring the same professional service and quality materials to every project.
-            </p>
-            <p>
-              Just {distance} from our Winter Haven location, we can quickly respond to your concrete needs with free on-site estimates and competitive pricing.
-            </p>
-          </div>
-          <div class="mt-8 flex flex-wrap gap-4">
-            <a href="/contact" class="inline-flex items-center gap-2 bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-lg transition-all">
-              Request Free Estimate
-            </a>
-            <a href="/locations" class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold py-3 px-6 transition-all">
-              View All Service Areas →
-            </a>
-          </div>
-        </div>
-        <div class="bg-white rounded-2xl p-8 shadow-lg">
-          <h3 class="font-bold text-gray-900 mb-4">Why Choose Us for Your {city} Project?</h3>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-              <span class="text-gray-600">Local team that knows {county} County</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-              <span class="text-gray-600">Free estimates with no obligation</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-              <span class="text-gray-600">Licensed & insured in Florida</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-              <span class="text-gray-600">Quality materials & expert installation</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-              <span class="text-gray-600">Only {distance} away — fast response times</span>
-            </li>
-          </ul>
-        </div>
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Also Serving Nearby Communities</h2>
+        <p class="text-lg text-gray-600">We provide concrete services throughout the Tampa Bay to Lakeland corridor.</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-4">
+        {nearbyLocations.map(location => (
+          <a href={location.href} class="bg-white px-6 py-3 rounded-lg shadow-sm hover:shadow-md border border-gray-200 hover:border-primary-500 transition-all text-gray-700 hover:text-primary-600 font-medium">
+            {location.name}
+          </a>
+        ))}
+        <a href="/locations" class="bg-primary-500 px-6 py-3 rounded-lg shadow-sm hover:bg-primary-600 transition-all text-white font-medium">
+          View All Locations →
+        </a>
       </div>
     </div>
   </section>
@@ -158,7 +397,7 @@ const schema = {
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-3xl font-bold text-white mb-6">Ready to Start Your {city} Concrete Project?</h2>
       <p class="text-xl text-primary-100 mb-8">
-        Contact us today for a free, no-obligation estimate on driveways, patios, slabs, or stamped concrete.
+        Contact us today for a free, no-obligation estimate on driveways, patios, slabs, or stamped concrete. We're proud to serve {city} and all of {county} County.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="tel:+18633966145" class="inline-flex items-center justify-center gap-2 bg-white text-primary-600 font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-all">

@@ -5,13 +5,43 @@ import ContactForm from '../../components/ContactForm.astro';
 const city = 'Kissimmee';
 const county = 'Osceola';
 const state = 'FL';
-const distance = '28 miles';
+const distance = '25 miles';
 
 const services = [
-  { name: 'Concrete Driveways', href: '/services/driveways' },
-  { name: 'Concrete Patios', href: '/services/patios' },
-  { name: 'Concrete Slabs', href: '/services/slabs' },
-  { name: 'Stamped Concrete', href: '/services/stamped-concrete' },
+  { name: 'Concrete Driveways', href: '/services/driveways', description: 'Custom driveways built to last' },
+  { name: 'Concrete Patios', href: '/services/patios', description: 'Beautiful outdoor living spaces' },
+  { name: 'Concrete Slabs', href: '/services/slabs', description: 'Solid foundations for any project' },
+  { name: 'Stamped Concrete', href: '/services/stamped-concrete', description: 'Decorative concrete designs' },
+];
+
+const nearbyLocations = [
+  { name: 'Celebration', href: '/locations/celebration' },
+  { name: 'St. Cloud', href: '/locations/st-cloud' },
+  { name: 'Poinciana', href: '/locations/poinciana' },
+  { name: 'Davenport', href: '/locations/davenport' },
+];
+
+const faqs = [
+  {
+    question: `How much does a concrete driveway cost in ${city}?`,
+    answer: `Concrete driveway costs in ${city} typically range from $6 to $12 per square foot for standard installations, and $12 to $20+ per square foot for stamped or decorative concrete. The tourist-area market can affect pricing, but we offer competitive rates for all ${city} residents. Factors affecting your specific price include driveway size, demolition needs, and design complexity. Contact us for a free detailed estimate.`
+  },
+  {
+    question: `Do you work with vacation rental properties in ${city}?`,
+    answer: `Absolutely! We work extensively with vacation rental property owners throughout ${city} and the greater Orlando tourism corridor. We understand the importance of quick turnaround times and durable finishes that can withstand heavy guest traffic. We can schedule work around your rental bookings to minimize impact on your business.`
+  },
+  {
+    question: `How does ${city}'s weather affect concrete installation?`,
+    answer: `${city}'s subtropical climate requires careful planning for concrete work. Summer heat and humidity can cause rapid moisture loss during curing, while afternoon thunderstorms (common May through October) require flexible scheduling. Our team monitors weather closely and adjusts concrete mix designs and curing methods to ensure optimal results year-round in ${county} County.`
+  },
+  {
+    question: `What makes ${city}'s soil challenging for concrete work?`,
+    answer: `${city} sits on Florida's typical sandy soil with varying levels of clay content and organic matter, particularly near wetland areas. Some areas have high water tables that require special consideration. We conduct site assessments to determine proper sub-base preparation, ensuring your concrete has a stable foundation that prevents settling and cracking.`
+  },
+  {
+    question: `Can you match concrete work to community HOA requirements in ${city}?`,
+    answer: `Yes! Many ${city} communities like Celebration, Harmony, and various HOA neighborhoods have specific requirements for concrete color, finish, and style. We're familiar with common HOA guidelines throughout ${county} County and can help ensure your project meets all community standards while achieving your desired look.`
+  }
 ];
 
 const schema = {
@@ -21,7 +51,13 @@ const schema = {
   "provider": {
     "@type": "LocalBusiness",
     "name": "Winter Haven Concrete Contractors",
-    "telephone": "(863) 396-6145"
+    "telephone": "(863) 396-6145",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Winter Haven",
+      "addressRegion": "FL",
+      "addressCountry": "US"
+    }
   },
   "areaServed": {
     "@type": "City",
@@ -33,14 +69,29 @@ const schema = {
   },
   "description": `Professional concrete contractors serving ${city}, ${state}. Driveways, patios, slabs, and stamped concrete.`
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
 ---
 
 <BaseLayout 
-  title={`Concrete Contractors ${city} FL | Driveways, Patios & Slabs`}
-  description={`Professional concrete contractors in ${city}, Florida. Expert driveways, patios, slabs & stamped concrete. ${distance} from Winter Haven. Free estimates. Call (863) 396-6145.`}
-  canonical="/locations/kissimmee"
+  title={`Concrete Contractors ${city} FL | Driveways, Patios, Slabs`}
+  description={`Professional concrete contractors in ${city}, Florida. Expert driveway installation, patio construction & stamped concrete near Disney World & Orlando attractions. Free estimates - call (863) 396-6145.`}
+  canonical={`/locations/${city.toLowerCase()}`}
   schema={schema}
 >
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
   <!-- Hero -->
   <section class="bg-gradient-to-br from-slate-900 to-slate-800 py-16 lg:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,12 +104,12 @@ const schema = {
             <span class="mx-2">›</span>
             <span class="text-gray-300">{city}</span>
           </nav>
-          <h1 class="text-4xl sm:text-5xl font-bold mb-6">Concrete Contractors in {city}, {state}</h1>
+          <h1 class="text-4xl sm:text-5xl font-bold mb-6">Concrete Contractors in {city}, Florida</h1>
           <p class="text-xl text-gray-300 mb-4">
-            Professional concrete services for {city} homes and businesses. Located just {distance} from our Winter Haven headquarters, we proudly serve the Gateway to Walt Disney World.
+            Professional concrete services for {city} homes and businesses. As the gateway to Orlando's world-famous attractions, {city} blends residential neighborhoods with a thriving tourism economy—and we serve both with expert concrete work.
           </p>
           <p class="text-gray-400 mb-8">
-            From new driveways to decorative stamped concrete patios, our experienced team delivers quality workmanship throughout {county} County.
+            From family homes in established neighborhoods to vacation rental properties near the theme parks, our team delivers quality <a href="/services/driveways" class="text-primary-400 hover:text-primary-300">driveways</a>, <a href="/services/patios" class="text-primary-400 hover:text-primary-300">patios</a>, and decorative concrete throughout {county} County.
           </p>
           <div class="flex flex-wrap gap-4">
             <a href="tel:+18633966145" class="inline-flex items-center gap-2 bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-lg transition-all">
@@ -79,76 +130,264 @@ const schema = {
     </div>
   </section>
 
-  <!-- Services -->
+  <!-- About Kissimmee Area -->
   <section class="py-16 lg:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Our Concrete Services in {city}</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Concrete Services Throughout {city}</h2>
+        <div class="prose prose-lg max-w-none text-gray-600">
+          <p>
+            {city}, Florida—the "Cow Capital" of the state—has transformed from a cattle town into one of Central Florida's most dynamic communities. Located in {county} County at the doorstep of Walt Disney World, Universal Studios, and SeaWorld, {city} serves both a thriving permanent population of over 75,000 and millions of annual visitors.
+          </p>
+          <p>
+            Our team has extensive experience working throughout {city}'s diverse landscape. Whether you're in the historic <strong>downtown {city}</strong> district near the Lakefront, the master-planned community of <strong>Celebration</strong>, the growing <strong>Poinciana</strong> area, or one of the many vacation home communities along US-192, we understand the specific requirements of each area.
+          </p>
+          <p>
+            {city}'s unique position as both a residential community and tourism hub creates diverse concrete needs. Homeowners want beautiful, durable driveways and patios. Vacation rental owners need hardscaping that withstands heavy use while creating that "wow factor" for guests. Commercial properties along the 192 corridor require professional-grade concrete work. We handle it all.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Concrete Services in {city}</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          From residential driveways to commercial <a href="/services/slabs" class="text-primary-600 hover:text-primary-700">concrete slabs</a>, we offer comprehensive concrete solutions tailored to {city}'s climate and diverse property types.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         {services.map(service => (
-          <a href={service.href} class="group bg-white border border-gray-200 p-6 rounded-xl hover:border-primary-500 hover:shadow-lg transition-all text-center">
-            <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-500 transition-colors">
+          <a href={service.href} class="group bg-white border border-gray-200 p-6 rounded-xl hover:border-primary-500 hover:shadow-lg transition-all">
+            <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary-500 transition-colors">
               <svg class="w-6 h-6 text-primary-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
               </svg>
             </div>
-            <h3 class="font-bold text-gray-900 group-hover:text-primary-600 transition-colors">{service.name}</h3>
+            <h3 class="font-bold text-gray-900 group-hover:text-primary-600 transition-colors mb-2">{service.name}</h3>
+            <p class="text-sm text-gray-600">{service.description}</p>
           </a>
+        ))}
+      </div>
+      <div class="max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Residential Concrete Services</h3>
+            <ul class="space-y-3 text-gray-600">
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Custom driveway installation and replacement</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Pool decks and outdoor entertainment areas</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Sidewalk and walkway installation</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Garage floor coatings and repairs</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span><a href="/services/stamped-concrete" class="text-primary-600 hover:text-primary-700">Decorative stamped concrete</a> with custom patterns</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Vacation Rental & Commercial Services</h3>
+            <ul class="space-y-3 text-gray-600">
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Vacation home driveways and patios</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Resort-style pool deck installations</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Commercial parking lot construction</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Retail storefront sidewalks</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <svg class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                <span>Hotel and resort concrete work</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Local Challenges Section -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Understanding {city}'s Concrete Challenges</h2>
+          <div class="space-y-4 text-gray-600">
+            <p>
+              Central Florida's unique environment presents specific challenges for concrete work that require local expertise. Our team understands these factors and builds them into every project plan.
+            </p>
+            <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
+              <h4 class="font-semibold text-amber-800 mb-2">Sandy Soil & High Water Table</h4>
+              <p class="text-amber-700 text-sm">
+                {city} sits on predominantly sandy soil with areas of high water tables, especially near lakes and wetlands. We address this through proper site assessment, adequate sub-base preparation, and appropriate drainage solutions to ensure long-lasting concrete installations.
+              </p>
+            </div>
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <h4 class="font-semibold text-blue-800 mb-2">Subtropical Climate</h4>
+              <p class="text-blue-700 text-sm">
+                {city}'s hot, humid summers and mild winters affect concrete curing and long-term performance. We use climate-appropriate concrete mixes and curing techniques to ensure optimal strength development regardless of season.
+              </p>
+            </div>
+            <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+              <h4 class="font-semibold text-green-800 mb-2">Heavy Traffic Requirements</h4>
+              <p class="text-green-700 text-sm">
+                Whether it's a vacation rental seeing constant guest turnover or a commercial property on US-192, {city} properties often experience heavy traffic. We design concrete installations with appropriate thickness and reinforcement for your specific use case.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
+          <h3 class="font-bold text-gray-900 text-xl mb-6">Why Choose Us for Your {city} Project?</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <div>
+                <span class="font-semibold text-gray-900">Tourism Industry Experience</span>
+                <p class="text-sm text-gray-600">We understand vacation rental and commercial property needs unique to {city}</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <div>
+                <span class="font-semibold text-gray-900">HOA-Compliant Work</span>
+                <p class="text-sm text-gray-600">Familiar with Celebration, Harmony, and other community requirements</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <div>
+                <span class="font-semibold text-gray-900">Flexible Scheduling</span>
+                <p class="text-sm text-gray-600">Work around rental bookings and business operations</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <div>
+                <span class="font-semibold text-gray-900">Licensed & Insured</span>
+                <p class="text-sm text-gray-600">Fully licensed Florida contractor with comprehensive coverage</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <div>
+                <span class="font-semibold text-gray-900">Free Detailed Estimates</span>
+                <p class="text-sm text-gray-600">Transparent pricing with no hidden fees</p>
+              </div>
+            </li>
+          </ul>
+          <div class="mt-8">
+            <a href="/contact" class="block w-full text-center bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-lg transition-all">
+              Get Your Free Estimate
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kissimmee Neighborhoods -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Serving All {city} Communities</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          From historic downtown to the tourism corridor, we provide concrete services throughout greater {city}.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">Downtown {city}</h3>
+          <p class="text-sm text-gray-600">Historic Lakefront area with older homes and revitalized commercial properties needing quality concrete work.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">US-192 Corridor</h3>
+          <p class="text-sm text-gray-600">The Irlo Bronson Memorial Highway tourism zone with hotels, restaurants, and vacation rental communities.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">Celebration</h3>
+          <p class="text-sm text-gray-600">Disney's master-planned community with strict architectural standards and quality-conscious residents.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">Poinciana</h3>
+          <p class="text-sm text-gray-600">Large residential community straddling Osceola and Polk counties with diverse housing.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">Buenaventura Lakes</h3>
+          <p class="text-sm text-gray-600">Established residential community with mix of single-family homes and townhouses.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">Intercession City</h3>
+          <p class="text-sm text-gray-600">Western Osceola community near US-27 with residential and agricultural properties.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">Campbell</h3>
+          <p class="text-sm text-gray-600">East Osceola area with growing residential development and new construction.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-gray-900 mb-3">Vacation Resort Communities</h3>
+          <p class="text-sm text-gray-600">ChampionsGate, Reunion, and other resort communities with high-end vacation homes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+        <p class="text-lg text-gray-600">Common questions about concrete services in {city}</p>
+      </div>
+      <div class="space-y-6">
+        {faqs.map((faq, index) => (
+          <div class="bg-white border border-gray-200 rounded-xl p-6">
+            <h3 class="font-bold text-gray-900 mb-3">{faq.question}</h3>
+            <p class="text-gray-600">{faq.answer}</p>
+          </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Local Area Info -->
+  <!-- Nearby Areas -->
   <section class="py-16 lg:py-24 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
-          <h2 class="text-3xl font-bold text-gray-900 mb-6">Serving {city} & {county} County</h2>
-          <div class="space-y-4 text-gray-600">
-            <p>
-              {city} is the Gateway to Walt Disney World. Our team has extensive experience working throughout the area, understanding local soil conditions, building codes, and the unique needs of {county} County residents.
-            </p>
-            <p>
-              Whether you're near Old Town Kissimmee, Lake Tohopekaliga, Downtown Kissimmee, we bring the same professional service and quality materials to every project.
-            </p>
-            <p>
-              Just {distance} from our Winter Haven location, we can quickly respond to your concrete needs with free on-site estimates and competitive pricing.
-            </p>
-          </div>
-          <div class="mt-8 flex flex-wrap gap-4">
-            <a href="/contact" class="inline-flex items-center gap-2 bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-lg transition-all">
-              Request Free Estimate
-            </a>
-            <a href="/locations" class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold py-3 px-6 transition-all">
-              View All Service Areas →
-            </a>
-          </div>
-        </div>
-        <div class="bg-white rounded-2xl p-8 shadow-lg">
-          <h3 class="font-bold text-gray-900 mb-4">Why Choose Us for Your {city} Project?</h3>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-              <span class="text-gray-600">Local team that knows {county} County</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-              <span class="text-gray-600">Free estimates with no obligation</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-              <span class="text-gray-600">Licensed & insured in Florida</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-              <span class="text-gray-600">Quality materials & expert installation</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-              <span class="text-gray-600">Only {distance} away — fast response times</span>
-            </li>
-          </ul>
-        </div>
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Also Serving Nearby Areas</h2>
+        <p class="text-lg text-gray-600">We provide concrete services throughout Central Florida, including these nearby communities.</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-4">
+        {nearbyLocations.map(location => (
+          <a href={location.href} class="bg-white px-6 py-3 rounded-lg shadow-sm hover:shadow-md border border-gray-200 hover:border-primary-500 transition-all text-gray-700 hover:text-primary-600 font-medium">
+            {location.name}
+          </a>
+        ))}
+        <a href="/locations" class="bg-primary-500 px-6 py-3 rounded-lg shadow-sm hover:bg-primary-600 transition-all text-white font-medium">
+          View All Locations →
+        </a>
       </div>
     </div>
   </section>
@@ -158,7 +397,7 @@ const schema = {
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-3xl font-bold text-white mb-6">Ready to Start Your {city} Concrete Project?</h2>
       <p class="text-xl text-primary-100 mb-8">
-        Contact us today for a free, no-obligation estimate on driveways, patios, slabs, or stamped concrete.
+        Contact us today for a free, no-obligation estimate on driveways, patios, slabs, or stamped concrete. We're proud to serve {city} and all of {county} County.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="tel:+18633966145" class="inline-flex items-center justify-center gap-2 bg-white text-primary-600 font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-all">
