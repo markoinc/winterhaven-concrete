@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://winterhavenconcrete.com/sitemap-index.xml
+Sitemap: https://winterhavenconcrete.com/sitemap.xml

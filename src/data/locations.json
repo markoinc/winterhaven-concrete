@@ -1,0 +1,377 @@
+[
+  {
+    "name": "Alturas",
+    "slug": "alturas",
+    "county": "Polk County"
+  },
+  {
+    "name": "Auburndale",
+    "slug": "auburndale",
+    "county": "Polk County"
+  },
+  {
+    "name": "Avon Park",
+    "slug": "avon-park",
+    "county": "Highlands County"
+  },
+  {
+    "name": "Babson Park",
+    "slug": "babson-park",
+    "county": "Polk County"
+  },
+  {
+    "name": "Bartow",
+    "slug": "bartow",
+    "county": "Polk County"
+  },
+  {
+    "name": "Bowling Green",
+    "slug": "bowling-green",
+    "county": "Hardee County"
+  },
+  {
+    "name": "Bradley Junction",
+    "slug": "bradley-junction",
+    "county": "Polk County"
+  },
+  {
+    "name": "Brandon",
+    "slug": "brandon",
+    "county": "Hillsborough County"
+  },
+  {
+    "name": "Buenaventura Lakes",
+    "slug": "buenaventura-lakes",
+    "county": "Osceola County"
+  },
+  {
+    "name": "Campbell",
+    "slug": "campbell",
+    "county": "Osceola County"
+  },
+  {
+    "name": "Celebration",
+    "slug": "celebration",
+    "county": "Osceola County"
+  },
+  {
+    "name": "Champions Gate",
+    "slug": "champions-gate",
+    "county": "Osceola County"
+  },
+  {
+    "name": "Clermont",
+    "slug": "clermont",
+    "county": "Lake County"
+  },
+  {
+    "name": "Combee Settlement",
+    "slug": "combee-settlement",
+    "county": "Polk County"
+  },
+  {
+    "name": "Crooked Lake Park",
+    "slug": "crooked-lake-park",
+    "county": "Polk County"
+  },
+  {
+    "name": "Crystal Lake",
+    "slug": "crystal-lake",
+    "county": "Polk County"
+  },
+  {
+    "name": "Cypress Gardens",
+    "slug": "cypress-gardens",
+    "county": "Polk County"
+  },
+  {
+    "name": "Dade City",
+    "slug": "dade-city",
+    "county": "Pasco County"
+  },
+  {
+    "name": "Davenport",
+    "slug": "davenport",
+    "county": "Polk County"
+  },
+  {
+    "name": "Dover",
+    "slug": "dover",
+    "county": "Hillsborough County"
+  },
+  {
+    "name": "Dundee",
+    "slug": "dundee",
+    "county": "Polk County"
+  },
+  {
+    "name": "Eagle Lake",
+    "slug": "eagle-lake",
+    "county": "Polk County"
+  },
+  {
+    "name": "Eaton Park",
+    "slug": "eaton-park",
+    "county": "Polk County"
+  },
+  {
+    "name": "Fort Meade",
+    "slug": "fort-meade",
+    "county": "Polk County"
+  },
+  {
+    "name": "Four Corners",
+    "slug": "four-corners",
+    "county": "Polk County"
+  },
+  {
+    "name": "Frostproof",
+    "slug": "frostproof",
+    "county": "Polk County"
+  },
+  {
+    "name": "Fuller Heights",
+    "slug": "fuller-heights",
+    "county": "Polk County"
+  },
+  {
+    "name": "Fussels Corner",
+    "slug": "fussels-corner",
+    "county": "Polk County"
+  },
+  {
+    "name": "Gibsonia",
+    "slug": "gibsonia",
+    "county": "Polk County"
+  },
+  {
+    "name": "Grenelefe",
+    "slug": "grenelefe",
+    "county": "Polk County"
+  },
+  {
+    "name": "Groveland",
+    "slug": "groveland",
+    "county": "Lake County"
+  },
+  {
+    "name": "Haines City",
+    "slug": "haines-city",
+    "county": "Polk County"
+  },
+  {
+    "name": "Harmony",
+    "slug": "harmony",
+    "county": "Osceola County"
+  },
+  {
+    "name": "Highland City",
+    "slug": "highland-city",
+    "county": "Polk County"
+  },
+  {
+    "name": "Highland Park",
+    "slug": "highland-park",
+    "county": "Polk County"
+  },
+  {
+    "name": "Hillcrest Heights",
+    "slug": "hillcrest-heights",
+    "county": "Polk County"
+  },
+  {
+    "name": "Homeland",
+    "slug": "homeland",
+    "county": "Polk County"
+  },
+  {
+    "name": "Intercession City",
+    "slug": "intercession-city",
+    "county": "Osceola County"
+  },
+  {
+    "name": "Inwood",
+    "slug": "inwood",
+    "county": "Polk County"
+  },
+  {
+    "name": "Jan Phyl Village",
+    "slug": "jan-phyl-village",
+    "county": "Polk County"
+  },
+  {
+    "name": "Kathleen",
+    "slug": "kathleen",
+    "county": "Polk County"
+  },
+  {
+    "name": "Kissimmee",
+    "slug": "kissimmee",
+    "county": "Osceola County"
+  },
+  {
+    "name": "Lake Alfred",
+    "slug": "lake-alfred",
+    "county": "Polk County"
+  },
+  {
+    "name": "Lake Hamilton",
+    "slug": "lake-hamilton",
+    "county": "Polk County"
+  },
+  {
+    "name": "Lake Placid",
+    "slug": "lake-placid",
+    "county": "Highlands County"
+  },
+  {
+    "name": "Lake Wales",
+    "slug": "lake-wales",
+    "county": "Polk County"
+  },
+  {
+    "name": "Lakeland",
+    "slug": "lakeland",
+    "county": "Polk County"
+  },
+  {
+    "name": "Lakeland Highlands",
+    "slug": "lakeland-highlands",
+    "county": "Polk County"
+  },
+  {
+    "name": "Leesburg",
+    "slug": "leesburg",
+    "county": "Lake County"
+  },
+  {
+    "name": "Lorida",
+    "slug": "lorida",
+    "county": "Highlands County"
+  },
+  {
+    "name": "Loughman",
+    "slug": "loughman",
+    "county": "Polk County"
+  },
+  {
+    "name": "Mascotte",
+    "slug": "mascotte",
+    "county": "Lake County"
+  },
+  {
+    "name": "Medulla",
+    "slug": "medulla",
+    "county": "Polk County"
+  },
+  {
+    "name": "Minneola",
+    "slug": "minneola",
+    "county": "Lake County"
+  },
+  {
+    "name": "Mulberry",
+    "slug": "mulberry",
+    "county": "Polk County"
+  },
+  {
+    "name": "Orlando",
+    "slug": "orlando",
+    "county": "Orange County"
+  },
+  {
+    "name": "Plant City",
+    "slug": "plant-city",
+    "county": "Hillsborough County"
+  },
+  {
+    "name": "Poinciana",
+    "slug": "poinciana",
+    "county": "Osceola County"
+  },
+  {
+    "name": "Polk City",
+    "slug": "polk-city",
+    "county": "Polk County"
+  },
+  {
+    "name": "Riverview",
+    "slug": "riverview",
+    "county": "Hillsborough County"
+  },
+  {
+    "name": "Sebring",
+    "slug": "sebring",
+    "county": "Highlands County"
+  },
+  {
+    "name": "Socrum",
+    "slug": "socrum",
+    "county": "Polk County"
+  },
+  {
+    "name": "St. Cloud",
+    "slug": "st-cloud",
+    "county": "Osceola County"
+  },
+  {
+    "name": "Sydney",
+    "slug": "sydney",
+    "county": "Hillsborough County"
+  },
+  {
+    "name": "Valrico",
+    "slug": "valrico",
+    "county": "Hillsborough County"
+  },
+  {
+    "name": "Venus",
+    "slug": "venus",
+    "county": "Highlands County"
+  },
+  {
+    "name": "Wahneta",
+    "slug": "wahneta",
+    "county": "Polk County"
+  },
+  {
+    "name": "Wauchula",
+    "slug": "wauchula",
+    "county": "Hardee County"
+  },
+  {
+    "name": "Waverly",
+    "slug": "waverly",
+    "county": "Polk County"
+  },
+  {
+    "name": "Willow Oak",
+    "slug": "willow-oak",
+    "county": "Polk County"
+  },
+  {
+    "name": "Windermere",
+    "slug": "windermere",
+    "county": "Orange County"
+  },
+  {
+    "name": "Winston",
+    "slug": "winston",
+    "county": "Polk County"
+  },
+  {
+    "name": "Winter Haven",
+    "slug": "winter-haven",
+    "county": "Polk County"
+  },
+  {
+    "name": "Zephyrhills",
+    "slug": "zephyrhills",
+    "county": "Pasco County"
+  },
+  {
+    "name": "Zolfo Springs",
+    "slug": "zolfo-springs",
+    "county": "Hardee County"
+  }
+]

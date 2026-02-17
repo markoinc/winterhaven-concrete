@@ -10,18 +10,34 @@ const services = [
   { href: '/services/stamped-concrete', label: 'Stamped Concrete' },
 ];
 
-const locations = [
+// Featured locations (most important cities)
+const featuredLocations = [
   { href: '/locations/winter-haven', label: 'Winter Haven' },
   { href: '/locations/lakeland', label: 'Lakeland' },
   { href: '/locations/auburndale', label: 'Auburndale' },
   { href: '/locations/haines-city', label: 'Haines City' },
   { href: '/locations/lake-wales', label: 'Lake Wales' },
+  { href: '/locations/bartow', label: 'Bartow' },
+  { href: '/locations/kissimmee', label: 'Kissimmee' },
+  { href: '/locations/plant-city', label: 'Plant City' },
+];
+
+// Counties served
+const countiesServed = [
+  'Polk County',
+  'Osceola County',
+  'Highlands County',
+  'Hillsborough County',
+  'Lake County',
+  'Hardee County',
+  'Orange County',
+  'Pasco County',
 ];
 
 const company = [
   { href: '/about', label: 'About Us' },
   { href: '/contact', label: 'Contact' },
-  { href: '/locations', label: 'Service Areas' },
+  { href: '/locations', label: 'All Service Areas' },
   { href: '/privacy', label: 'Privacy Policy' },
   { href: '/terms', label: 'Terms of Service' },
 ];
@@ -45,7 +61,7 @@ const company = [
           </div>
         </div>
         <p class="text-gray-400 text-sm mb-4 leading-relaxed">
-          Local concrete contractors serving Winter Haven and Polk County since 2012. 
+          Local concrete contractors serving Winter Haven and 75+ cities across Central Florida. 
           Driveways, patios, slabs, and decorative concrete done right.
         </p>
         <a href={phoneHref} class="inline-flex items-center gap-2 text-sky-400 hover:text-sky-300 font-semibold">
@@ -74,13 +90,18 @@ const company = [
       <div>
         <h3 class="text-white font-semibold mb-4">Service Areas</h3>
         <ul class="space-y-2">
-          {locations.map(link => (
+          {featuredLocations.map(link => (
             <li>
               <a href={link.href} class="text-gray-400 hover:text-sky-400 text-sm transition-colors">
                 {link.label}
               </a>
             </li>
           ))}
+          <li>
+            <a href="/locations" class="text-sky-400 hover:text-sky-300 text-sm font-medium transition-colors">
+              View All 75+ Cities →
+            </a>
+          </li>
         </ul>
       </div>
       
@@ -100,6 +121,18 @@ const company = [
     </div>
   </div>
   
+  <!-- Counties Bar -->
+  <div class="border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="text-center">
+        <p class="text-xs text-gray-500 mb-2">Proudly Serving</p>
+        <p class="text-sm text-gray-400">
+          {countiesServed.join(' • ')}
+        </p>
+      </div>
+    </div>
+  </div>
+  
   <!-- Bottom Bar -->
   <div class="border-t border-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -113,7 +146,7 @@ const company = [
             FL Licensed & Insured
           </span>
           <span>•</span>
-          <span>Polk County, Florida</span>
+          <span>Central Florida</span>
         </div>
       </div>
     </div>
