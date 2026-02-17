@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const features = [
+  'Custom sizes and shapes to fit your space',
+  'Multiple finish options (brushed, stamped, stained)',
+  'Perfect for outdoor entertaining',
+  'Integrates with pools, fire pits, and outdoor kitchens',
+  'Slip-resistant textures available',
+  'Built to handle Florida weather',
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Concrete Patio Installation",
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Winter Haven Concrete Contractors"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Winter Haven, Florida"
+  },
+  "description": "Professional concrete patio installation in Winter Haven, FL. Create your perfect outdoor living space."
+};
+---
+
+<BaseLayout 
+  title="Concrete Patios Winter Haven FL | Outdoor Living Spaces"
+  description="Custom concrete patio installation in Winter Haven, FL. Create beautiful outdoor living spaces for entertaining. Free estimates. Call (863) 396-6145."
+  canonical="/services/patios"
+  schema={schema}
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-slate-900 to-slate-800 py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="text-white">
+          <nav class="text-sm text-gray-400 mb-4">
+            <a href="/" class="hover:text-primary-400">Home</a>
+            <span class="mx-2">›</span>
+            <span class="text-gray-300">Concrete Patios</span>
+          </nav>
+          <h1 class="text-4xl sm:text-5xl font-bold mb-6">Concrete Patio Contractors in Winter Haven</h1>
+          <p class="text-xl text-gray-300 mb-8">
+            Expand your living space outdoors with a beautiful, durable concrete patio. Perfect for Florida's year-round outdoor lifestyle.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="tel:+18633966145" class="inline-flex items-center gap-2 bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-lg transition-all">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+              </svg>
+              (863) 396-6145
+            </a>
+            <a href="/contact" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-6 rounded-lg border border-white/20 transition-all">
+              Get Free Quote
+            </a>
+          </div>
+        </div>
+        <div>
+          <ContactForm variant="dark" title="Get Your Patio Quote" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="order-2 lg:order-1 aspect-[4/3] bg-gradient-to-br from-slate-200 to-slate-300 rounded-2xl flex items-center justify-center text-slate-400">
+          <svg class="w-24 h-24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+          </svg>
+        </div>
+        <div class="order-1 lg:order-2">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">Create Your Perfect Outdoor Space</h2>
+          <p class="text-lg text-gray-600 mb-8">
+            A concrete patio provides the foundation for outdoor living. Whether you're hosting barbecues, relaxing by the pool, or enjoying quiet evenings, we'll build a patio that meets your needs.
+          </p>
+          <ul class="space-y-4">
+            {features.map(feature => (
+              <li class="flex items-start gap-3">
+                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-gray-700">{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Patio Ideas -->
+  <section class="py-16 lg:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Popular Patio Options</h2>
+        <p class="text-xl text-gray-600">Design ideas for your outdoor space.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Brushed Finish</h3>
+          <p class="text-gray-600">Classic look with excellent traction. Ideal for pool decks and high-traffic areas.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Stamped Concrete</h3>
+          <p class="text-gray-600">Mimics natural stone, brick, or tile at a fraction of the cost. Endless design options.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Stained Concrete</h3>
+          <p class="text-gray-600">Add color to complement your home's exterior. Multiple shades available.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 lg:py-20 bg-primary-500">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-white mb-6">Ready for Your New Patio?</h2>
+      <p class="text-xl text-primary-100 mb-8">
+        Get a free estimate for your concrete patio project in Winter Haven.
+      </p>
+      <a href="tel:+18633966145" class="inline-flex items-center gap-2 bg-white text-primary-600 font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-all">
+        Call (863) 396-6145
+      </a>
+    </div>
+  </section>
+</BaseLayout>
