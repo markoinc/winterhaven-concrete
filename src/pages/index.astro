@@ -1,33 +1,33 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const phone = '(863) 396-6145';
-const phoneHref = 'tel:+18633966145';
+const phone = '(863) 400-0803';
+const phoneHref = 'tel:+18634000803';
 
 const services = [
   {
     title: 'Driveways',
     description: 'Built to handle Florida heat and daily use. New installations, extensions, and replacements.',
     href: '/services/driveways',
-    image: '/images/driveway-placeholder.jpg'
+    image: '/images/concrete-driveway.webp'
   },
   {
     title: 'Patios',
     description: 'Extend your living space outdoors. Perfect for Polk County\'s year-round sunshine.',
     href: '/services/patios',
-    image: '/images/patio-placeholder.jpg'
+    image: '/images/concrete-patio.webp'
   },
   {
     title: 'Concrete Slabs',
     description: 'Solid foundations for sheds, workshops, and outbuildings. Proper prep, proper pour.',
     href: '/services/slabs',
-    image: '/images/slab-placeholder.jpg'
+    image: '/images/concrete-slab.webp'
   },
   {
     title: 'Stamped Concrete',
     description: 'The look of stone or brick without the price. Popular around Lake Howard homes.',
     href: '/services/stamped-concrete',
-    image: '/images/stamped-placeholder.jpg'
+    image: '/images/stamped-concrete.webp'
   },
 ];
 
@@ -145,7 +145,7 @@ const faqSchema = {
 
 <BaseLayout 
   title="Concrete Contractors Winter Haven FL | Driveways, Patios & Slabs"
-  description="Local concrete contractors in Winter Haven and Polk County, FL. Driveways, patios, slabs, stamped concrete. Free estimates. Call (863) 396-6145."
+  description="Local concrete contractors in Winter Haven and Polk County, FL. Driveways, patios, slabs, stamped concrete. Free estimates. Call (863) 400-0803."
   canonical="/"
   schema={faqSchema}
 >
@@ -370,10 +370,8 @@ const faqSchema = {
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {services.map(service => (
           <a href={service.href} class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-200 hover:border-sky-300">
-            <div class="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 relative overflow-hidden">
-              <div class="absolute inset-0 flex items-center justify-center text-gray-400 group-hover:scale-105 transition-transform">
-                <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-              </div>
+            <div class="aspect-[4/3] relative overflow-hidden">
+              <img src={service.image} alt={service.title + ' in Winter Haven FL'} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
             </div>
             <div class="p-5">
               <h3 class="text-lg font-bold text-gray-900 group-hover:text-sky-700 transition-colors mb-2">{service.title}</h3>
