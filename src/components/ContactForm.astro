@@ -5,12 +5,12 @@ interface Props {
 }
 
 const { variant = 'light', title = 'Get Your Free Estimate' } = Astro.props;
-const bgClass = variant === 'dark' ? 'bg-slate-800' : 'bg-white';
+const bgClass = variant === 'dark' ? 'bg-gray-800' : 'bg-white';
 const textClass = variant === 'dark' ? 'text-white' : 'text-gray-900';
-const inputBg = variant === 'dark' ? 'bg-slate-700 border-slate-600 text-white placeholder-gray-400' : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500';
+const inputBg = variant === 'dark' ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' : 'bg-white border-gray-300 text-gray-900 placeholder-gray-500';
 ---
 
-<div class={`${bgClass} rounded-xl shadow-xl p-6 sm:p-8`}>
+<div class={`${bgClass} rounded-xl shadow-xl p-6 sm:p-8 border border-gray-200`}>
   <h3 class={`text-2xl font-bold ${textClass} mb-2`}>{title}</h3>
   <p class={`${variant === 'dark' ? 'text-gray-300' : 'text-gray-600'} mb-6`}>
     Fill out the form below for a free, no-obligation quote.
@@ -26,7 +26,7 @@ const inputBg = variant === 'dark' ? 'bg-slate-700 border-slate-600 text-white p
           type="text" 
           name="name" 
           required 
-          class={`w-full px-4 py-3 rounded-lg border ${inputBg} focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all`}
+          class={`w-full px-4 py-3 rounded-lg border ${inputBg} focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all`}
           placeholder="Your name"
         >
       </div>
@@ -38,7 +38,7 @@ const inputBg = variant === 'dark' ? 'bg-slate-700 border-slate-600 text-white p
           type="tel" 
           name="phone" 
           required 
-          class={`w-full px-4 py-3 rounded-lg border ${inputBg} focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all`}
+          class={`w-full px-4 py-3 rounded-lg border ${inputBg} focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all`}
           placeholder="(555) 123-4567"
         >
       </div>
@@ -51,7 +51,7 @@ const inputBg = variant === 'dark' ? 'bg-slate-700 border-slate-600 text-white p
       <input 
         type="email" 
         name="email" 
-        class={`w-full px-4 py-3 rounded-lg border ${inputBg} focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all`}
+        class={`w-full px-4 py-3 rounded-lg border ${inputBg} focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all`}
         placeholder="your@email.com"
       >
     </div>
@@ -62,7 +62,7 @@ const inputBg = variant === 'dark' ? 'bg-slate-700 border-slate-600 text-white p
       </label>
       <select 
         name="service" 
-        class={`w-full px-4 py-3 rounded-lg border ${inputBg} focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all`}
+        class={`w-full px-4 py-3 rounded-lg border ${inputBg} focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all`}
       >
         <option value="">Select a service...</option>
         <option value="driveway">Concrete Driveway</option>
@@ -80,20 +80,20 @@ const inputBg = variant === 'dark' ? 'bg-slate-700 border-slate-600 text-white p
       <textarea 
         name="message" 
         rows="4" 
-        class={`w-full px-4 py-3 rounded-lg border ${inputBg} focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none`}
+        class={`w-full px-4 py-3 rounded-lg border ${inputBg} focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all resize-none`}
         placeholder="Tell us about your project..."
       ></textarea>
     </div>
     
     <button 
       type="submit" 
-      class="w-full bg-primary-500 hover:bg-primary-600 text-white font-semibold py-4 px-6 rounded-lg transition-all hover:-translate-y-0.5 hover:shadow-lg"
+      class="w-full bg-sky-700 hover:bg-sky-800 text-white font-semibold py-4 px-6 rounded-lg transition-all hover:-translate-y-0.5 hover:shadow-lg"
     >
       Get Free Estimate
     </button>
     
     <p class={`text-xs ${variant === 'dark' ? 'text-gray-400' : 'text-gray-500'} text-center`}>
-      By submitting, you agree to our <a href="/privacy" class="underline hover:text-primary-500">Privacy Policy</a>.
+      By submitting, you agree to our <a href="/privacy" class="underline hover:text-sky-500">Privacy Policy</a>.
     </p>
   </form>
 </div>

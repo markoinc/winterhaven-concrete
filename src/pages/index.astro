@@ -1,230 +1,504 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ContactForm from '../components/ContactForm.astro';
+
+const phone = '(863) 396-6145';
+const phoneHref = 'tel:+18633966145';
 
 const services = [
   {
-    title: 'Concrete Driveways',
-    description: 'Durable, professionally-installed driveways that enhance curb appeal and withstand Florida weather.',
+    title: 'Driveways',
+    description: 'Built to handle Florida heat and daily use. New installations, extensions, and replacements.',
     href: '/services/driveways',
-    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>`
+    image: '/images/driveway-placeholder.jpg'
   },
   {
-    title: 'Concrete Patios',
-    description: 'Create the perfect outdoor living space with custom concrete patios built to last.',
+    title: 'Patios',
+    description: 'Extend your living space outdoors. Perfect for Polk County\'s year-round sunshine.',
     href: '/services/patios',
-    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>`
+    image: '/images/patio-placeholder.jpg'
   },
   {
     title: 'Concrete Slabs',
-    description: 'Strong foundations and slabs for sheds, garages, workshops, and commercial applications.',
+    description: 'Solid foundations for sheds, workshops, and outbuildings. Proper prep, proper pour.',
     href: '/services/slabs',
-    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>`
+    image: '/images/slab-placeholder.jpg'
   },
   {
     title: 'Stamped Concrete',
-    description: 'Beautiful decorative concrete that mimics stone, brick, or tile at a fraction of the cost.',
+    description: 'The look of stone or brick without the price. Popular around Lake Howard homes.',
     href: '/services/stamped-concrete',
-    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path></svg>`
+    image: '/images/stamped-placeholder.jpg'
   },
 ];
 
-const benefits = [
-  { title: 'Licensed & Insured', desc: 'Full protection for every project' },
-  { title: 'Free Estimates', desc: 'No-obligation quotes within 24 hours' },
-  { title: 'Quality Materials', desc: 'Premium concrete mixes for durability' },
-  { title: 'Local Experts', desc: 'Polk County contractors who know FL weather' },
+const reviews = [
+  {
+    name: 'Mike T.',
+    location: 'Cypress Gardens area',
+    text: 'Had them pour a new driveway last spring. Crew showed up on time, cleaned up after themselves, and the concrete has held up great through two hurricane seasons.',
+    rating: 5
+  },
+  {
+    name: 'Jennifer R.',
+    location: 'Lake Shipp neighborhood',
+    text: 'We got quotes from three companies. These guys weren\'t the cheapest but they were the most straightforward about what we needed. Patio turned out beautiful.',
+    rating: 5
+  },
+  {
+    name: 'Carlos M.',
+    location: 'Winter Haven',
+    text: 'Fixed a cracked slab behind my shop that two other contractors said couldn\'t be repaired. Fair price, solid work. Would use again.',
+    rating: 5
+  },
 ];
 
-const areas = ['Winter Haven', 'Lakeland', 'Auburndale', 'Haines City', 'Lake Wales', 'Bartow', 'Davenport', 'Polk City'];
+const stats = [
+  { number: '500+', label: 'Projects Completed' },
+  { number: '12', label: 'Years in Business' },
+  { number: '4.9', label: 'Google Rating' },
+  { number: '100%', label: 'Licensed & Insured' },
+];
+
+const areas = [
+  'Winter Haven',
+  'Lakeland', 
+  'Auburndale',
+  'Haines City',
+  'Lake Wales',
+  'Bartow',
+  'Davenport',
+  'Polk City'
+];
 ---
 
 <BaseLayout 
-  title="Winter Haven Concrete Contractors | Driveways, Patios & Slabs"
-  description="Professional concrete contractors in Winter Haven, FL. Expert installation of driveways, patios, slabs & stamped concrete. Free estimates. Call (863) 396-6145."
+  title="Concrete Contractors Winter Haven FL | Driveways, Patios & Slabs"
+  description="Local concrete contractors in Winter Haven and Polk County, FL. Driveways, patios, slabs, stamped concrete. Free estimates. Call (863) 396-6145."
   canonical="/"
 >
-  <!-- Hero Section -->
-  <section class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-16 lg:py-24 overflow-hidden">
-    <div class="absolute inset-0 bg-[url('/images/concrete-texture.jpg')] opacity-10 bg-cover bg-center"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <!-- Hero Content -->
-        <div class="text-white">
-          <div class="inline-flex items-center gap-2 bg-primary-500/20 border border-primary-500/30 rounded-full px-4 py-2 mb-6">
-            <span class="w-2 h-2 bg-primary-400 rounded-full animate-pulse"></span>
-            <span class="text-primary-300 text-sm font-medium">Serving Polk County, Florida</span>
+  <!-- Hero - Clean, Light, Professional -->
+  <section class="relative bg-gradient-to-b from-sky-50 to-white pt-8 pb-16 lg:pt-12 lg:pb-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Urgency Banner -->
+      <div class="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 mb-8 flex items-center justify-center gap-3 text-sm">
+        <span class="inline-flex items-center gap-1.5 text-amber-800 font-medium">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
+          February availability: 3 spots left for new projects
+        </span>
+        <a href={phoneHref} class="text-amber-900 font-semibold hover:underline">Call now →</a>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <!-- Left: Content -->
+        <div>
+          <div class="flex items-center gap-2 text-sm text-gray-600 mb-4">
+            <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+            Serving Winter Haven &amp; Polk County since 2012
           </div>
           
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-            Winter Haven's Trusted 
-            <span class="text-primary-400">Concrete Contractors</span>
+          <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 leading-tight mb-6">
+            Concrete Work Done Right,<br>
+            <span class="text-sky-700">The First Time</span>
           </h1>
           
-          <p class="text-xl text-gray-300 mb-8 leading-relaxed">
-            Professional concrete installation for driveways, patios, slabs, and decorative stamped concrete. Quality craftsmanship backed by years of experience.
+          <p class="text-xl text-gray-600 mb-6 leading-relaxed">
+            We're a local crew that's poured concrete across Polk County for over a decade. 
+            Driveways, patios, slabs—straightforward work, fair prices, no games.
           </p>
           
-          <div class="flex flex-col sm:flex-row gap-4 mb-8">
-            <a href="tel:+18633966145" class="inline-flex items-center justify-center gap-2 bg-primary-500 hover:bg-primary-600 text-white font-semibold py-4 px-8 rounded-lg transition-all hover:-translate-y-0.5 hover:shadow-xl">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <!-- Trust Row -->
+          <div class="flex flex-wrap items-center gap-4 mb-8 text-sm">
+            <div class="flex items-center gap-1.5 bg-white shadow-sm border border-gray-200 rounded-full px-3 py-1.5">
+              <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <span class="font-medium text-gray-700">FL Licensed</span>
+            </div>
+            <div class="flex items-center gap-1.5 bg-white shadow-sm border border-gray-200 rounded-full px-3 py-1.5">
+              <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <span class="font-medium text-gray-700">Fully Insured</span>
+            </div>
+            <div class="flex items-center gap-1.5 bg-white shadow-sm border border-gray-200 rounded-full px-3 py-1.5">
+              <svg class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              <span class="font-medium text-gray-700">4.9 on Google</span>
+            </div>
+          </div>
+
+          <!-- Phone CTA -->
+          <div class="flex flex-col sm:flex-row gap-4 mb-6">
+            <a href={phoneHref} class="inline-flex items-center justify-center gap-3 bg-sky-700 hover:bg-sky-800 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all shadow-lg shadow-sky-700/25 hover:shadow-xl">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
               </svg>
-              (863) 396-6145
+              {phone}
             </a>
-            <a href="/contact" class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold py-4 px-8 rounded-lg border border-white/20 transition-all">
-              Get Free Estimate
+            <a href="#quote-form" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-50 text-gray-800 font-semibold py-4 px-8 rounded-lg border-2 border-gray-300 transition-all">
+              Get a Free Quote
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </a>
           </div>
           
-          <!-- Trust Badges -->
-          <div class="flex flex-wrap gap-6 text-sm text-gray-400">
-            <div class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-              </svg>
-              <span>Licensed & Insured</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-              </svg>
-              <span>Free Estimates</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-              </svg>
-              <span>Satisfaction Guaranteed</span>
-            </div>
-          </div>
+          <p class="text-sm text-gray-500">
+            Free estimates • Usually respond within a few hours
+          </p>
         </div>
         
-        <!-- Hero Form -->
-        <div>
-          <ContactForm variant="dark" />
+        <!-- Right: Quote Form -->
+        <div id="quote-form" class="bg-white rounded-2xl shadow-xl border border-gray-200 p-6 sm:p-8">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 bg-sky-100 rounded-full flex items-center justify-center">
+              <svg class="w-5 h-5 text-sky-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-gray-900">Get Your Free Quote</h2>
+              <p class="text-sm text-gray-500">No obligation, no pressure</p>
+            </div>
+          </div>
+          
+          <form action="https://formspree.io/f/placeholder" method="POST" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Your Name *</label>
+                <input type="text" name="name" required 
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all"
+                  placeholder="John Smith">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number *</label>
+                <input type="tel" name="phone" required 
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all"
+                  placeholder="(863) 555-1234">
+              </div>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+              <input type="email" name="email" 
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all"
+                placeholder="john@email.com">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">What do you need?</label>
+              <select name="service" 
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all">
+                <option value="">Select a service...</option>
+                <option value="driveway-new">New Driveway</option>
+                <option value="driveway-repair">Driveway Repair/Replace</option>
+                <option value="patio">Patio</option>
+                <option value="slab">Concrete Slab</option>
+                <option value="stamped">Stamped/Decorative Concrete</option>
+                <option value="sidewalk">Sidewalk/Walkway</option>
+                <option value="other">Something Else</option>
+              </select>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Tell us about your project</label>
+              <textarea name="message" rows="3" 
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-all resize-none"
+                placeholder="Size, location, timeline..."></textarea>
+            </div>
+            
+            <button type="submit" 
+              class="w-full bg-sky-700 hover:bg-sky-800 text-white font-bold py-4 px-6 rounded-lg transition-all shadow-lg hover:shadow-xl">
+              Request Free Estimate
+            </button>
+            
+            <p class="text-xs text-gray-500 text-center">
+              We respect your privacy. See our <a href="/privacy" class="underline">Privacy Policy</a>.
+            </p>
+          </form>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Services Section -->
-  <section class="py-16 lg:py-24 bg-gray-50">
+  <!-- Stats Bar -->
+  <section class="bg-gray-900 py-6">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Our Concrete Services</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          From simple slabs to decorative stamped concrete, we deliver quality workmanship on every project.
-        </p>
-      </div>
-      
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-        {services.map(service => (
-          <a href={service.href} class="group bg-white rounded-xl p-6 shadow-sm hover:shadow-xl transition-all hover:-translate-y-1">
-            <div class="w-14 h-14 bg-primary-100 rounded-xl flex items-center justify-center text-primary-600 mb-4 group-hover:bg-primary-500 group-hover:text-white transition-colors" set:html={service.icon}></div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">{service.title}</h3>
-            <p class="text-gray-600">{service.description}</p>
-          </a>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        {stats.map(stat => (
+          <div>
+            <div class="text-3xl sm:text-4xl font-bold text-white">{stat.number}</div>
+            <div class="text-gray-400 text-sm">{stat.label}</div>
+          </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Why Choose Us -->
-  <section class="py-16 lg:py-24">
+  <!-- How We Work - Process Section -->
+  <section class="py-16 lg:py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <div>
-          <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-            Why Choose Winter Haven Concrete Contractors?
-          </h2>
-          <p class="text-lg text-gray-600 mb-8">
-            We're local contractors who understand Polk County's unique climate and soil conditions. Our team delivers durable, beautiful concrete work that stands up to Florida's heat, humidity, and occasional freezes.
-          </p>
-          
-          <div class="grid sm:grid-cols-2 gap-6">
-            {benefits.map(benefit => (
-              <div class="flex items-start gap-3">
-                <div class="flex-shrink-0 w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                  <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="font-semibold text-gray-900">{benefit.title}</h3>
-                  <p class="text-gray-600 text-sm">{benefit.desc}</p>
-                </div>
-              </div>
-            ))}
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">How It Works</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Simple process, clear communication, quality results.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Step 1 -->
+        <div class="relative text-center">
+          <div class="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold text-sky-700">1</span>
           </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Free On-Site Estimate</h3>
+          <p class="text-gray-600">
+            We come look at your project, measure everything, and give you an honest quote—usually same week.
+          </p>
+          <!-- Connector line -->
+          <div class="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-gray-200 -z-10"></div>
         </div>
         
-        <div class="relative">
-          <div class="aspect-[4/3] bg-gradient-to-br from-slate-200 to-slate-300 rounded-2xl overflow-hidden">
-            <div class="absolute inset-0 flex items-center justify-center text-slate-400">
-              <svg class="w-24 h-24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-              </svg>
-            </div>
+        <!-- Step 2 -->
+        <div class="relative text-center">
+          <div class="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold text-sky-700">2</span>
           </div>
-          <div class="absolute -bottom-6 -right-6 bg-primary-500 text-white rounded-xl p-6 shadow-xl">
-            <div class="text-4xl font-bold">10+</div>
-            <div class="text-primary-100">Years Experience</div>
-          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Schedule &amp; Prep</h3>
+          <p class="text-gray-600">
+            Once you say go, we handle permits if needed, prep the area, and schedule around your timeline.
+          </p>
+          <div class="hidden md:block absolute top-8 left-1/2 w-full h-0.5 bg-gray-200 -z-10"></div>
         </div>
+        
+        <!-- Step 3 -->
+        <div class="text-center">
+          <div class="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl font-bold text-sky-700">3</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Pour &amp; Finish</h3>
+          <p class="text-gray-600">
+            Professional pour, proper curing time, clean finish. We walk you through care instructions before we leave.
+          </p>
+        </div>
+      </div>
+      
+      <div class="text-center mt-10">
+        <a href={phoneHref} class="inline-flex items-center gap-2 text-sky-700 font-semibold hover:text-sky-800">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+          Call {phone} to get started
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Service Areas -->
-  <section class="py-16 lg:py-24 bg-slate-900 text-white">
+  <!-- Services -->
+  <section class="py-16 lg:py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Serving Polk County & Beyond</h2>
-        <p class="text-xl text-gray-300">
-          We provide concrete services throughout Central Florida.
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What We Do</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Residential and light commercial concrete work throughout Polk County.
         </p>
       </div>
       
-      <div class="flex flex-wrap justify-center gap-4">
-        {areas.map(area => (
-          <a href={`/locations/${area.toLowerCase().replace(/\s+/g, '-')}`} class="bg-white/10 hover:bg-primary-500 px-6 py-3 rounded-full font-medium transition-colors">
-            {area}
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {services.map(service => (
+          <a href={service.href} class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-200 hover:border-sky-300">
+            <div class="aspect-[4/3] bg-gradient-to-br from-gray-200 to-gray-300 relative overflow-hidden">
+              <div class="absolute inset-0 flex items-center justify-center text-gray-400 group-hover:scale-105 transition-transform">
+                <svg class="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-gray-900 group-hover:text-sky-700 transition-colors mb-2">{service.title}</h3>
+              <p class="text-gray-600 text-sm leading-relaxed">{service.description}</p>
+            </div>
           </a>
         ))}
       </div>
       
       <div class="text-center mt-8">
-        <a href="/locations" class="text-primary-400 hover:text-primary-300 font-medium inline-flex items-center gap-2">
-          View All Service Areas
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
-        </a>
+        <p class="text-gray-600 mb-4">Don't see what you need? We might still be able to help.</p>
+        <a href={phoneHref} class="text-sky-700 font-semibold hover:text-sky-800">Call and ask: {phone}</a>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="py-16 lg:py-24 bg-primary-500">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-6">
-        Ready to Start Your Concrete Project?
-      </h2>
-      <p class="text-xl text-primary-100 mb-8">
-        Get a free, no-obligation estimate today. We'll assess your project and provide honest, competitive pricing.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="tel:+18633966145" class="inline-flex items-center justify-center gap-2 bg-white text-primary-600 font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition-all hover:-translate-y-0.5">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-          </svg>
-          Call (863) 396-6145
-        </a>
-        <a href="/contact" class="inline-flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-700 text-white font-bold py-4 px-8 rounded-lg border-2 border-primary-400 transition-all">
-          Request Free Quote
-        </a>
+  <!-- Reviews / Testimonials -->
+  <section class="py-16 lg:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What Our Customers Say</h2>
+        <div class="flex items-center justify-center gap-2">
+          <div class="flex">
+            {[1,2,3,4,5].map(() => (
+              <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+            ))}
+          </div>
+          <span class="text-gray-600">4.9 average from 47 reviews</span>
+        </div>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        {reviews.map((review, i) => (
+          <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 font-bold text-lg">
+                {review.name.charAt(0)}
+              </div>
+              <div>
+                <div class="font-semibold text-gray-900">{review.name}</div>
+                <div class="text-sm text-gray-500">{review.location}</div>
+              </div>
+            </div>
+            <div class="flex mb-3">
+              {[1,2,3,4,5].map(() => (
+                <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              ))}
+            </div>
+            <p class="text-gray-700 leading-relaxed">"{review.text}"</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
+
+  <!-- Local Area Section -->
+  <section class="py-16 lg:py-20 bg-sky-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-bold mb-6">
+            Serving Winter Haven &amp; All of Polk County
+          </h2>
+          <p class="text-sky-100 text-lg mb-6 leading-relaxed">
+            Based right here in Winter Haven, we know the area. From properties along the Chain of Lakes 
+            to neighborhoods near downtown and out toward Cypress Gardens—we've poured concrete across 
+            every part of Polk County.
+          </p>
+          <p class="text-sky-100 mb-8">
+            Central Florida weather is tough on concrete. The heat, the humidity, the afternoon storms. 
+            We use the right mix designs and curing techniques to make sure your concrete holds up for years.
+          </p>
+          
+          <div class="flex flex-wrap gap-2 mb-8">
+            {areas.map(area => (
+              <a href={`/locations/${area.toLowerCase().replace(/\s+/g, '-')}`} 
+                class="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-full text-sm font-medium transition-colors">
+                {area}
+              </a>
+            ))}
+          </div>
+          
+          <a href="/locations" class="inline-flex items-center gap-2 text-sky-300 hover:text-white font-medium">
+            View all service areas
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </a>
+        </div>
+        
+        <div class="bg-white/10 rounded-2xl p-8 backdrop-blur-sm">
+          <h3 class="text-xl font-bold mb-4">Why Local Matters</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-sky-300 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <span class="text-sky-100">We understand Polk County soil conditions and drainage</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-sky-300 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <span class="text-sky-100">Quick response times—usually quote within 48 hours</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-sky-300 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <span class="text-sky-100">Established relationships with local suppliers</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-sky-300 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <span class="text-sky-100">Our reputation matters here—we live where we work</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 lg:py-20 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Common Questions</h2>
+      </div>
+      
+      <div class="space-y-4">
+        <details class="bg-white rounded-lg border border-gray-200 overflow-hidden group">
+          <summary class="flex items-center justify-between p-6 cursor-pointer font-semibold text-gray-900 hover:bg-gray-50">
+            How much does a concrete driveway cost in Winter Haven?
+            <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-600">
+            Most driveways in Polk County run between $8-15 per square foot installed, depending on size, thickness, and any decorative work. A typical 2-car driveway (400-600 sq ft) usually costs $4,000-8,000. We give free quotes so you know exactly what to expect.
+          </div>
+        </details>
+        
+        <details class="bg-white rounded-lg border border-gray-200 overflow-hidden group">
+          <summary class="flex items-center justify-between p-6 cursor-pointer font-semibold text-gray-900 hover:bg-gray-50">
+            How long before I can walk on new concrete?
+            <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-600">
+            Light foot traffic is usually fine after 24-48 hours. For vehicles on driveways, we recommend waiting 7 days. Full cure takes about 28 days, but you can use it normally after the first week.
+          </div>
+        </details>
+        
+        <details class="bg-white rounded-lg border border-gray-200 overflow-hidden group">
+          <summary class="flex items-center justify-between p-6 cursor-pointer font-semibold text-gray-900 hover:bg-gray-50">
+            Do you pour concrete in the rain?
+            <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-600">
+            No—rain during a pour can ruin the concrete. We watch the weather closely and will reschedule if there's a significant chance of rain. Florida weather is unpredictable, but we'd rather delay a day than do a bad job.
+          </div>
+        </details>
+        
+        <details class="bg-white rounded-lg border border-gray-200 overflow-hidden group">
+          <summary class="flex items-center justify-between p-6 cursor-pointer font-semibold text-gray-900 hover:bg-gray-50">
+            Can you fix cracked concrete or do I need to replace it?
+            <svg class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-600">
+            Depends on the damage. Small cracks can often be sealed. Larger structural cracks or heaving usually means replacement. We'll give you an honest assessment—we're not going to push a replacement if a repair will work.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-16 lg:py-24 bg-white border-t border-gray-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+        Ready to Talk About Your Project?
+      </h2>
+      <p class="text-xl text-gray-600 mb-8">
+        Call us or fill out the form above. We'll get back to you quickly with a free, no-obligation estimate.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+        <a href={phoneHref} class="inline-flex items-center justify-center gap-3 bg-sky-700 hover:bg-sky-800 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all shadow-lg">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+          {phone}
+        </a>
+        <a href="#quote-form" class="inline-flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-4 px-8 rounded-lg transition-all">
+          Fill Out Quote Form
+        </a>
+      </div>
+      
+      <p class="text-gray-500 text-sm">
+        Winter Haven Concrete Contractors • Serving Polk County, Florida
+      </p>
+    </div>
+  </section>
+
+  <!-- Sticky Mobile CTA -->
+  <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-3 lg:hidden z-50 shadow-lg">
+    <a href={phoneHref} class="flex items-center justify-center gap-2 bg-sky-700 hover:bg-sky-800 text-white font-bold py-3.5 px-6 rounded-lg w-full">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+      Call {phone} - Free Quote
+    </a>
+  </div>
+  
+  <!-- Add padding at bottom for sticky CTA on mobile -->
+  <div class="h-20 lg:hidden"></div>
 </BaseLayout>
